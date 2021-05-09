@@ -1,12 +1,17 @@
 ---
 layout: post
 title: Dynamic DynamoDB for Autoscaling Amazon DynamoDB
-description: Dynamic DynamoDB for monitoring and scaling Amazon DynamoDB
-#image: /assets/media/Lamp.jpg
-Categories: [AWS]
+author: Dijeesh Padinharethil
+date: 2019-06-05 11:00:00 +0800
+categories: [AWS]
 tags: [AWS, dynamic-dynamodb, dynamodb, nosql, dijeeshpnair, devops, ]
+math: true
+mermaid: true
+description: Dynamic DynamoDB for Autoscaling Amazon DynamoDB
+#image: /assets/media/Lamp.jpg
 comments: true
 ---
+
 Autoscaling Amazon DynamoDB
 ======
 

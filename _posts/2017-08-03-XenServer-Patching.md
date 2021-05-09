@@ -1,10 +1,14 @@
 ---
 layout: post
 title: Applying XenServer Patches
+author: Dijeesh Padinharethil
+date: 2019-06-05 11:00:00 +0800
+categories: [Virtualization]
+tags: [networking, virtualization, xenserver, xen, upgrade, patching, sysops, dijeeshpnair, devops]
+math: true
+mermaid: true
 description: Applying XenServer Patches
 #image: /assets/media/Lamp.jpg
-Categories: [Virtualization]
-tags: [networking, virtualization, xenserver, xen, upgrade, patching, sysops, dijeeshpnair, devops]
 comments: true
 ---
 

@@ -1,13 +1,16 @@
 ---
 layout: post
 title: Juniper SRX Cluster – Branch Devices – ICU Upgrade
+author: Dijeesh Padinharethil
+date: 2019-06-05 11:00:00 +0800
+categories: [Security]
+tags: [networking, netops, juniper, srx, junos, junipernetworks, dijeeshpnair, devops ]
+math: true
+mermaid: true
 description: Juniper SRX Cluster – Branch Devices – ICU Upgrade
 #image: /assets/media/Lamp.jpg
-Categories: [Networking]
-tags: [networking, netops, juniper, srx, junos, junipernetworks, dijeeshpnair, devops ]
 comments: true
 ---
-
 
 JunOS versions on Branch devices (SRX100, SRX210, SRX220, SRX240, SRX550, and SRX650 Services Gateways) in a chassis cluster can be upgraded using  in-band cluster upgrade (ICU) method. Downtime required for this type of upgrade method is less than 30 seconds.
 

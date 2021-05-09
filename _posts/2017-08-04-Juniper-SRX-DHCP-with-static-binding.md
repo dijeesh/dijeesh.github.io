@@ -1,11 +1,17 @@
 ---
 layout: post
 title: Juniper SRX DHCP Configuration with Static binding
+author: Dijeesh Padinharethil
+date: 2019-06-05 11:00:00 +0800
+categories: [Security]
+tags: [networking, netops, juniper, srx, junos, junipernetworks, dijeeshpnair, devops]
+math: true
+mermaid: true
 description: Juniper SRX DHCP Configuration with Static binding
-Categories: [AWS]
-tags: [networking, netops, juniper, srx, junos, junipernetworks, dijeeshpnair, devops, ]
+#image: /assets/media/Lamp.jpg
 comments: true
 ---
+
 
 This article will guide you to configre your SRX firewall device as a DHCP server for your local networks and binding static IP Address for specific MAC Addresses.
 
