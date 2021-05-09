@@ -2,7 +2,7 @@
 layout: post
 title: Amazon Smbhav Hackathon - Build for India - Winners
 author: Dijeesh Padinharethil
-date: 2019-11-05 11:00:00 +0800
+date: 2021-04-18 11:00:00 +0800
 categories: [AWS]
 tags: [aws, amazon, smbhav, hackathon, acdkochi19, kochi, communityday]
 math: true
@@ -16,7 +16,7 @@ comments: true
 
 ### Amazon Smbhav Hackathon - Build for India - Winners
 
-As part of the Amazon Smbhav Summit, Skillenza organized an all-India Hackathon Challenge and our team won the first prize.   Congratulation to Shamshir Anees, Vinila Cherichal, Haridasan Shanmugam, and Prabheesh Kuttan. And kudos to all other participants. 
+As part of the Amazon Smbhav Summit, Skillenza organized an all-India Hackathon Challenge and our team won the first prize.   Congratulation to [Shamshir Anees](https://www.linkedin.com/in/shamshiranees/), [Vinila Cherichal](https://www.linkedin.com/in/vinila-cherichal-04b267119/), [Haridasan Shanmugam](https://www.linkedin.com/in/haridasan/), and [Prabheesh Kuttan](https://www.linkedin.com/in/prabeesh-kavungal-326908a4/). And kudos to all other participants. 
 
 <br>
 
@@ -25,7 +25,7 @@ As part of the Amazon Smbhav Summit, Skillenza organized an all-India Hackathon 
 <br>
 <br>
 
-Everything happened over a casual chat with one of our team members Shamshir Anees, who is very keen to learn new technologies and used to build sample projects whenever he gets free time.  I was sharing the Hackathon Event details via our AWSUGKOCHI channels and asked him to take a look. He was very interested to learn Serverless Technology and ready to give it a try. 
+Everything happened over a casual chat with one of our team members Shamshir Anees, who is very keen to learn new technologies and used to build sample projects whenever he gets free time. I was sharing the Hackathon Event details via our AWSUGKOCHI channels and asked him to take a look. He was very interested to learn Serverless Technology and ready to give it a try. 
 
 <br>
 <br>
