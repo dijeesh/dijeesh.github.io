@@ -1,6 +1,6 @@
 ---
 title: Resume
-icon: fas fa-info
+icon: fas fa-user-circle-o
 order: 5
 ---
 
