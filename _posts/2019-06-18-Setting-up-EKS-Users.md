@@ -1,12 +1,17 @@
 ---
 layout: post
 title: Setting up additional users in Amazon EKS
+author: Dijeesh Padinharethil
+date: 2019-06-22 11:00:00 +0800
+categories: [AWS]
+tags: [devops, sysops, aws, EKS, kubernetes, IAM, dijeeshpnair, kubectl ]
+math: true
+mermaid: true
 description: Setting up additional users in Amazon EKS
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [devops, sysops, aws, EKS, kubernetes, IAM, dijeeshpnair, kubectl ]
 comments: true
 ---
+
 
 # **EKS Authentication - Summary**
 
