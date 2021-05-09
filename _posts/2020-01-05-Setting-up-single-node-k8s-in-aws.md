@@ -1,5 +1,5 @@
 ---
-# layout: post
+layout: post
 title: Setting up Single node Kubernetes in AWS using Kubeadm
 author: Dijeesh Padinharethil
 date: 2020-01-05 11:00:00 +0800
