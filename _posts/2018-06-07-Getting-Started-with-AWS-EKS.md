@@ -23,7 +23,7 @@ By default, AWS CloudFormation templates provided in EKS Getting started guide w
 <br>
 <br>
 
-![Architecture Diagram](assets/media/eks_sample_architetcure.jpg)
+![Architecture Diagram](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/eks_sample_architetcure.jpg)
 
 <br>
 <br>

@@ -25,7 +25,7 @@ However, if you're trying to source data from RDS instance, you'll find difficul
 Here is a rough architecture diagram:
 
 <br>
-![Architecture Diagram](assets/media/quicksight.jpg)
+![Architecture Diagram](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/quicksight.jpg)
 
 <br>
 ## Steps :

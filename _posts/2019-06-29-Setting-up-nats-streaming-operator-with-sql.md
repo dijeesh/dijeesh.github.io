@@ -12,7 +12,7 @@ comments: true
 
 <br>
 
-![NATS](assets/media/blogs-nats-io.jpg)
+![NATS](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/blogs-nats-io.jpg)
 
 
 #### **NATS-IO**

@@ -16,7 +16,7 @@ comments: true
 
 <br>
 
-![k8s](assets/media/2020-01-k8s-single-node.png)
+![k8s](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/2020-01-k8s-single-node.png)
 
 
 ### Kubernetes

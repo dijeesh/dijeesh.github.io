@@ -10,7 +10,7 @@ comments: true
 
 # **EKS Authentication - Summary**
 
-![EKSAUTH](assets/media/eks_auth_diagram.png)
+![EKSAUTH](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/eks_auth_diagram.png)
 
 
 - Amazon EKS uses IAM to provide authentication to your Kubernetes cluster.
