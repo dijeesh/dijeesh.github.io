@@ -1,10 +1,14 @@
 ---
-layout: post
+# layout: post
 title: Setting up Single node Kubernetes in AWS using Kubeadm
+author: Dijeesh Padinharethil
+date: 2020-01-05 11:00:00 +0800
+categories: [AWS]
+tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, single-node, k8s, ubuntu, kubeadm ]
+math: true
+mermaid: true
 description: Setting up Single node Kubernetes in AWS using Kubeadm
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, single-node, k8s, ubuntu, kubeadm ]
 comments: true
 ---
 
