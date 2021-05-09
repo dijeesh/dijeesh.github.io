@@ -17,12 +17,10 @@ timezone: Asia/Kolkata
 # --------------------------
 title : Dijeesh Padinharethil                     # the main title
 
-tagline: "Infrastructure | Operations | AWS | DevSecOps Engineer"  # it will display as the sub-title
+tagline: "AWS Hero, Infrastructure | Operations | AWS | DevSecOps Engineer"  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Dijeesh Padinharethil, AWS Container Hero, AWS User Group Kochi
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://dijeesh.github.io'
