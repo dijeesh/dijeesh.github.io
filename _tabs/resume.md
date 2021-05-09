@@ -1,7 +1,7 @@
 ---
 title: Resume
-icon: fas fa-user-circle-o
-order: 5
+icon: fas fa-user
+order: 2
 ---
 
 Dijeesh Padinharethil
