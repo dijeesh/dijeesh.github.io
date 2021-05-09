@@ -1,12 +1,17 @@
 ---
 layout: post
 title: AWS Quicksight access for RDS instance in VPC Private subnets
+author: Dijeesh Padinharethil
+date: 2017-08-05 11:00:00 +0800
+categories: [AWS]
+tags: [AWS, rds, quicksight, haproxy, mysql, visualization, sysops, dijeeshpnair, devops]
+math: true
+mermaid: true
 description: AWS Quicksight access for RDS instance in VPC Private subnets
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [AWS, rds, quicksight, haproxy, mysql, visualization, sysops, dijeeshpnair, devops]
 comments: true
 ---
+
 
 ## Quicksight
 

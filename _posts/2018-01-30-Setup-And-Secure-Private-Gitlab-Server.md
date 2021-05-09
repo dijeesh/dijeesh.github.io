@@ -1,10 +1,14 @@
 ---
 layout: post
 title: Install and Configure Gitlab CE Server in AWS
-description: Install and Configure Private Gitlab CE Server in AWS
-#image: /assets/media/Lamp.jpg
-Categories: [DevOPS]
+author: Dijeesh Padinharethil
+date: 2019-06-05 11:00:00 +0800
+categories: [AWS]
 tags: [devops, sysops, gitlab-ce, git, centos7, devops, dijeeshpnair ]
+math: true
+mermaid: true
+description: Install and Configure Gitlab CE Server in AWS
+#image: /assets/media/Lamp.jpg
 comments: true
 ---
 

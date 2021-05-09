@@ -1,12 +1,18 @@
 ---
 layout: post
 title: Setting up NATS Streaming Operator with SQL Storage in EKS
+author: Dijeesh Padinharethil
+date: 2019-06-29 11:00:00 +0800
+categories: [AWS]
+tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, nats-io, nats-streaming, nats-operator, nats-streaming-operator ]
+math: true
+mermaid: true
 description: Setting up NATS Streaming Operator with SQL Storage in EKS
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, nats-io, nats-streaming, nats-operator, nats-streaming-operator ]
 comments: true
 ---
+
+
 
 ### Introduction
 

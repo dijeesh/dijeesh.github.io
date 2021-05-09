@@ -1,10 +1,14 @@
 ---
 layout: post
 title: First look into AWS EKS - Getting started
+author: Dijeesh Padinharethil
+date: 2019-06-07 11:00:00 +0800
+categories: [AWS]
+tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, docker ]
+math: true
+mermaid: true
 description: First look into AWS EKS - Getting started
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, docker ]
 comments: true
 ---
 

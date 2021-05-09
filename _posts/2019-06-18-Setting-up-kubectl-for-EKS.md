@@ -1,12 +1,17 @@
 ---
 layout: post
 title: Setting up Kubectl for Amazon EKS
+author: Dijeesh Padinharethil
+date: 2019-06-23  11:00:00 +0800
+categories: [AWS]
+tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, kubectl ]
+math: true
+mermaid: true
 description: Setting up Kubectl for Amazon EKS
 #image: /assets/media/Lamp.jpg
-Categories: [AWS]
-tags: [devops, sysops, aws, EKS, kubernetes, containerization, dijeeshpnair, kubectl ]
 comments: true
 ---
+
 
 ### **1. Install kubectl for Amazon EKS**
 
