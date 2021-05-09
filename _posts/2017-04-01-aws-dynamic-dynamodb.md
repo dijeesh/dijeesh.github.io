@@ -33,7 +33,7 @@ Architecture
 Here is a sample architecture diagram. </P>
 
 <br>
-![Architecture Diagram](assets/media/dynamic_dynamoDB.jpg)
+![Architecture Diagram](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/dynamic_dynamoDB.jpg)
 
 <br>
 <p style="text-align:justify;">
