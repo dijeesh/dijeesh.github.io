@@ -19,10 +19,10 @@ Super excited to be a part of [AWS Hero Program](https://aws.amazon.com/develope
 
 Here is the official AWS announcement blog post https://aws.amazon.com/blogs/aws/get-to-know-the-first-new-aws-heroes-of-2021
 
-![Architecture Diagram](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/aws-container-hero.png.jpg)
+![Architecture Diagram](https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/aws-container-hero.png)
 
 
-Thank you [Amazon Web Services](https://www.linkedin.com/company/amazon-web-services/) (AWS), [Ross Barich](https://www.linkedin.com/in/rossbarich/), [Preeti Rajendran](https://www.linkedin.com/in/preetirajendran/)
+Thank you [Amazon Web Services](https://www.linkedin.com/company/amazon-web-services/) (AWS), [Ross Barich](https://www.linkedin.com/in/rossbarich/), and [Preeti Rajendran](https://www.linkedin.com/in/preetirajendran/) :)
 
 
 Special thanks to [Rashmi Nambiar, PMP](https://www.linkedin.com/in/rashminambiar/), [Suman Debnath](https://www.linkedin.com/in/suman-d/), [Rohini Gaonkar](https://www.linkedin.com/in/rohinigaonkar) and all #awsugindia ,#awsugkochi team members for the support.
