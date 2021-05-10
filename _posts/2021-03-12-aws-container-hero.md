@@ -32,3 +32,6 @@ Congratulations to all heroes. Looking forward to work with all of you.
 
 
 Thanks everyone for the warm wishes :)
+
+
+And to all aspiring heroes out there, please come forward, be a part of the AWS User Group communities, share your knowledge with the world and help to organize the meetups and community events. Your hard work will be paid off. 
