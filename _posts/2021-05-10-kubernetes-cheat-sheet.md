@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Kubernetes Cheat Sheet
+title: Kubernetes kubectl cheat sheet
 author: Dijeesh Padinharethil
 date: 2021-04-18 11:00:00 +0800
 categories: [AWS]
 tags: [aws, eks, kubernetes, kubectl, cheatsheet, devops]
 math: true
 mermaid: true
-description: Kubernetes Cheat Sheet
+description: Kubernetes kubectl cheat sheet
 #image: /assets/media/Lamp.jpg
 comments: true
 ---
