@@ -1,14 +1,14 @@
 ---
 layout: post
-title: AWS Container Hero yayyy !! yayyy !! yayyy !!
+title: AWS Container Hero ..........yayyy !!
 author: Dijeesh Padinharethil
 date: 2021-04-14 11:00:00 +0800
 categories: [Kubernetes]
 tags: [aws, awshero, awscontainerhero, dijeeshpnair, awscloud, awsugkochi, awsugindia ]
 math: true
 mermaid: true
-description: AWS Container Hero
-#image: /assets/media/Lamp.jpg
+description: AWS Container Hero ..........yayyy !!uvv h
+#image: /assets/media/Lamp.jpg 
 comments: true
 ---
 
