@@ -24,9 +24,13 @@ A dynamic, self-motivated Information Technology professional with over 12+ year
 
 <br>
 
-#### March 2012 -  Present 			Network Redux India Private Limited ( Kochi, India )
+#### March 2022 -  Present 			Sedai.io ( Kochi, India )
 	
-	Jan 2019 - Present		Associate Director, Cloud Services
+	Mar 2022 - Present		Director of Engineering
+
+#### March 2012 -  March 2022 			Network Redux India Private Limited ( Kochi, India )
+	
+	Jan 2019 - Mar 2022		Associate Director, Cloud Services
 	Jan 2017 - Dec 2018		Lead Operations Engineer				    
 	Apr 2015 - Dec 2016		Senior Operations Engineer			        
 	Apr 2014 - Mar 2015		Senior System Architect				        

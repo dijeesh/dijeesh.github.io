@@ -5,7 +5,7 @@ order: 1
 ---
 
 
-A dynamic, self-motivated Information Technology Professional with around 9+ years of hands on experience in building and managing highly available, secure, redundant, scalable systems and solutions from scratch.
+A dynamic, self-motivated Information Technology Professional with around 13+ years of hands on experience in building and managing highly available, secure, redundant, scalable systems and solutions from scratch.
 
 I’m a passionate learner, solution architect, problem solver and karma believer with exceptional work ethic, straightforward, strong interpersonal and networking skills.
 
@@ -16,7 +16,11 @@ In love with nature, travel, photography, and football. When not playing with my
 
 # Recent work history
 
-**- Network Redux LLC**  ( Marc 2012 - Present )
+**- Sedai **  ( Mar 2022 - Present )
+
+  - Director of Engineering
+
+**- Network Redux LLC**  ( Mar 2012 - Mar 2022 )
 
   - Associate Director, Cloud Services
   - Lead Operations Engineer - DevOps ↟
@@ -43,7 +47,11 @@ In love with nature, travel, photography, and football. When not playing with my
 - Linux System Administration
 - Cloud (Private , Public , Hybrid ) Solution Architect
 - DevOPS Consultant
-- Virtualization, Containerization
+- Virtualization, Containerization (Docker, Kubernetes)
+- Serverless
+- Infrasturcture as a Code (Ansible, Terraform)
+- Well Architected Framework
+- FinOps
 - Database Administration (MySQL, Postgres, Aurora, MongoDB)
 - Backups and Storage Administration
 - Network Administration
