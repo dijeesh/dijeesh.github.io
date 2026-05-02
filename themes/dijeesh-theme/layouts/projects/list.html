@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="section page-header">
+  <div class="container">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-desc">Cloud infrastructure, Kubernetes, and DevOps projects.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="projects-grid">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="project-card">
+        <h3 class="project-card-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.role }}<p class="project-role">{{ . }}</p>{{ end }}
+        <p>{{ .Summary | truncate 150 }}</p>
+        <div class="post-tags">
+          {{ range .Params.tags }}
+          <span class="tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ with .Params.github }}<a href="{{ . }}" target="_blank" class="project-link"><i class="fab fa-github"></i> Source</a>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+    <div class="projects-coming-soon">
+      <p>🚀 More projects will be added soon — stay in touch via <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank">LinkedIn</a> or <a href="https://twitter.com/dijeeshpnair" target="_blank">Twitter</a> for updates.</p>
+    </div>
+  </div>
+</section>
+{{ end }}

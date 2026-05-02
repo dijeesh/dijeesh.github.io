@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <h1 class="article-title">{{ .Title }}</h1>
+      {{ with .Params.role }}<p class="project-role" style="font-size:0.9rem;margin-bottom:12px;">{{ . }}</p>{{ end }}
+      <div class="post-tags">
+        {{ range .Params.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ with .Params.github }}<a href="{{ . }}" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>{{ end }}
+    </header>
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+    <nav class="article-nav">
+      <a href="/projects/" class="btn btn-outline">← Back to Projects</a>
+    </nav>
+  </div>
+</article>
+{{ end }}

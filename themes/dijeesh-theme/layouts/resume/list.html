@@ -1,0 +1,156 @@
+{{ define "main" }}
+<section class="section page-header">
+  <div class="container">
+    <h1 class="page-title">Resume</h1>
+    <p class="page-desc">18+ years in Cloud Infrastructure, Kubernetes, DevOps & SRE</p>
+    {{ with .Site.Params.resumePDF }}
+    <a href="{{ . }}" target="_blank" class="btn btn-primary" style="margin-top: 16px;"><i class="fas fa-download"></i> &nbsp;Download PDF</a>
+    {{ end }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 860px;">
+
+    <!-- Summary -->
+    <div class="resume-section">
+      <h2>Professional Summary</h2>
+      <p>Engineering leader with 18+ years of experience in cloud infrastructure, Kubernetes, DevOps, and SRE. Recognized as an <strong>AWS Container Hero</strong> by Amazon Web Services for significant, sustained contributions to the cloud and developer community.</p>
+      <p>Currently leading Platform and R&D at <strong>Sedai</strong> — building multi-cloud platform infrastructure from the ground up across AWS, GCP, and Azure, driving research in Kubernetes and GPU workload optimization, and helping enterprise customers reduce cloud and AI infrastructure spend by 30–40%.</p>
+    </div>
+
+    <!-- Experience -->
+    <div class="resume-section">
+      <h2>Experience</h2>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Director of Engineering – Platform & R&D</h3>
+          <span class="resume-meta">Sedai · Mar 2022 – Present</span>
+        </div>
+        <ul>
+          <li>Led R&D for Kubernetes optimization including GPU workload optimization, Karpenter tuning, and autonomous node pool optimization for EKS, GKE, and AKS</li>
+          <li>Architected Sedai's multi-cloud platform infrastructure from the ground up across AWS, GCP, and Azure</li>
+          <li>Owned end-to-end BYOC on-premises installations for major US enterprise clients</li>
+          <li>Researched autonomous optimization of dynamic node provisioning — translating R&D into product features for CPU and GPU fleet right-sizing</li>
+          <li>Designed SaaS onboarding platform and Kubernetes self-integration workflows</li>
+          <li>Led go-to-market availability on Spectro Cloud, AWS, and Azure Marketplaces</li>
+          <li>Partnered with enterprises to deliver 30–40% reductions in cloud spend</li>
+          <li>Contributed to SOC 2 certification preparation</li>
+          <li>Served as internal SME for Kubernetes across engineering, product, and customer-facing teams</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Cloud Native Consultant</h3>
+          <span class="resume-meta">Zappyhire · Feb 2022 – Jul 2022</span>
+        </div>
+        <ul>
+          <li>Led end-to-end infrastructure modernization — containerizing applications, implementing GitOps, migrating to Amazon EKS</li>
+          <li>Designed isolated Dev, Stage, and Production environments on AWS</li>
+          <li>Delivered highly available infrastructure achieving 100% uptime for production services</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Associate Director – Cloud Services</h3>
+          <span class="resume-meta">Network Redux · Jan 2019 – Feb 2022</span>
+        </div>
+        <ul>
+          <li>Led 30–40 member cloud operations team across India and the US</li>
+          <li>Active role in pre-sales — solution engineering and translating business requirements into cloud proposals</li>
+          <li>Owned end-to-end SRE and DevOps for high-profile clients</li>
+          <li>Helped enterprise clients achieve PCI-DSS certification across AWS and private cloud</li>
+          <li>Directed DevOps transformation — containerization, IaC, and automated deployments</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Lead Operations Engineer – DevOps</h3>
+          <span class="resume-meta">Network Redux · Dec 2016 – Jan 2019</span>
+        </div>
+        <ul>
+          <li>Founded and built Network Redux's Managed AWS Services practice from scratch — became the company's leading revenue source</li>
+          <li>Led cloud migrations for multiple on-premises datacenter customers to AWS</li>
+          <li>Architected highly available, scalable AWS infrastructure with Kubernetes orchestration</li>
+          <li>Established monitoring, alerting, and incident response workflows</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Senior Operations Engineer / System Architect</h3>
+          <span class="resume-meta">Network Redux · Mar 2012 – Dec 2016</span>
+        </div>
+        <ul>
+          <li>Planned and executed datacenter consolidation — Portland and Washington to Seattle with near-zero interruption</li>
+          <li>Managed private cloud environments on Citrix XenServer</li>
+          <li>Designed backup and disaster recovery for entire server estate</li>
+          <li>Administered Juniper SRX firewalls and led network migration to Arista</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>System Administrator & Production Support Team Lead</h3>
+          <span class="resume-meta">MST (International Mobile Sportsbook) · Jan 2011 – Mar 2012</span>
+        </div>
+        <ul>
+          <li>Built MST's in-house infrastructure from scratch — network design through HA production servers</li>
+          <li>Managed production databases (MySQL, Oracle) and reporting platforms</li>
+          <li>Led 3-member team delivering 24x7 platform availability</li>
+        </ul>
+      </div>
+
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Internal System Administrator → Team Lead</h3>
+          <span class="resume-meta">Bobcares (Poornam Info Vision) · Sep 2008 – Jan 2011</span>
+        </div>
+        <ul>
+          <li>Managed 300+ Linux workstations across Kochi, Germany, and US offices</li>
+          <li>Administered entire in-house server infrastructure — NIS, NFS, OpenAFS, OpenVPN, Zimbra, and more</li>
+          <li>Progressed from Sysadmin to Team Lead; led 6-member internal systems team</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="resume-section">
+      <h2>Certifications</h2>
+      <div class="certs-grid">
+        <div class="cert-item"><i class="fas fa-dharmachakra"></i> Certified Kubernetes Security Specialist (CKS) – CNCF</div>
+        <div class="cert-item"><i class="fas fa-dharmachakra"></i> Certified Kubernetes Administrator (CKA) – CNCF</div>
+        <div class="cert-item"><i class="fab fa-aws"></i> AWS Solutions Architect – Associate</div>
+        <div class="cert-item"><i class="fas fa-shield-alt"></i> Juniper JNCIS-SEC – Juniper Networks</div>
+        <div class="cert-item"><i class="fas fa-shield-alt"></i> JNCA-Junos – Juniper Networks</div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="resume-section">
+      <h2>Education</h2>
+      <div class="resume-entry">
+        <div class="resume-entry-header">
+          <h3>Bachelor of Commerce (B.Com with Computer Applications)</h3>
+          <span class="resume-meta">St Joseph's College Devagiri, University of Calicut · 2005 – 2008</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="resume-section">
+      <h2>Languages</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">English</span>
+        <span class="skill-tag">Malayalam</span>
+        <span class="skill-tag">Hindi</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}

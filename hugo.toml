@@ -1,0 +1,64 @@
+baseURL = "https://dijeesh.github.io/"
+languageCode = "en-us"
+title = "Dijeesh Padinharethil"
+theme = "dijeesh-theme"
+
+[params]
+  description = "AWS Container Hero | Director of Engineering – Platform & R&D | Cloud, Kubernetes & Infrastructure"
+  author = "Dijeesh Padinharethil"
+  profileImage = "/images/dijeesh-padinharethil.webp"
+  heroTitle = "Dijeesh Padinharethil"
+  heroSubtitle = "Director of Engineering — Platform & R&D"
+  heroTagline = "AWS Container Hero · 18+ Years Architecting Scalable Cloud, Kubernetes & AI Platforms"
+  resumePDF = "/files/Dijeesh_Padinharethil_Resume.pdf"
+
+  [params.social]
+    linkedin = "https://www.linkedin.com/in/dijeeshpnair/"
+    github = "https://github.com/dijeesh"
+    twitter = "https://twitter.com/dijeeshpnair"
+    email = "dijeeshpnair@gmail.com"
+
+  [params.contact]
+    calendly = "https://calendly.com/dijeeshpnair/technical-consultation-with-dijeesh"
+    location = "Ernakulam, Kerala, India"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+  [[menu.main]]
+    name = "Community"
+    url = "/community/"
+    weight = 4
+  [[menu.main]]
+    name = "Contact"
+    url = "/#contact"
+    weight = 5
+  [[menu.main]]
+    name = "Resume"
+    url = "/resume/"
+    weight = 6
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    guessSyntax = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+
+[pagination]
+  pagerSize = 10

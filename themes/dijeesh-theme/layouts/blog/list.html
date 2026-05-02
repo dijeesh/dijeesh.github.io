@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="section page-header">
+  <div class="container">
+    <h1 class="page-title">Blog</h1>
+    <p class="page-desc">Thoughts on cloud infrastructure, DevOps, Kubernetes, and AWS.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="blog-cards-grid">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="blog-card">
+        <a href="{{ .Permalink }}" class="blog-card-link">
+          <div class="blog-card-top">
+            <time class="blog-card-date">{{ .Date.Format "Jan 2, 2006" }}</time>
+            <span class="blog-card-reading">{{ math.Round (div (countwords .Content) 225.0) }} min read</span>
+          </div>
+          <h2 class="blog-card-title">{{ .Title }}</h2>
+          {{ with .Description }}
+          <p class="blog-card-desc">{{ . | truncate 140 }}</p>
+          {{ else }}
+          <p class="blog-card-desc">{{ .Summary | plainify | truncate 140 }}</p>
+          {{ end }}
+          <div class="blog-card-tags">
+            {{ with .Params.tags }}{{ range first 3 . }}
+            <span class="tag">{{ . }}</span>
+            {{ end }}{{ end }}
+          </div>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

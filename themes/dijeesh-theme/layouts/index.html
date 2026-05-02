@@ -1,0 +1,319 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-title">{{ .Site.Params.heroTitle }}</h1>
+        <p class="hero-subtitle">{{ .Site.Params.heroSubtitle }}</p>
+        <p class="hero-tagline">{{ .Site.Params.heroTagline }}</p>
+        <p class="hero-tagline">Organizer — <a href="https://www.meetup.com/awsugkochi/" target="_blank">AWS User Group Kochi</a> · <a href="https://community.cncf.io/cloud-native-kochi/" target="_blank">CNCG Kochi</a></p>
+        <div class="hero-actions">
+          <a href="/projects/" class="btn btn-primary">View Projects</a>
+          <a href="/blog/" class="btn btn-outline">Read Blog</a>
+          <a href="/resume/" class="btn btn-outline">Resume</a>
+        </div>
+        <div class="hero-social">
+          {{ with .Site.Params.social.linkedin }}<a href="{{ . }}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>{{ end }}
+          {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>{{ end }}
+          {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>{{ end }}
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="slideshow-glow"></div>
+        <div class="slideshow" id="heroSlideshow">
+          <img src="/images/slideshow/0.webp" alt="Dijeesh Padinharethil" class="slide active">
+          <img src="/images/slideshow/1.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/2.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/3.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/4.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/5.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/6.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/7.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/8.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/9.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/10.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/11.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/12.webp" alt="Dijeesh Padinharethil" class="slide">
+          <img src="/images/slideshow/13.webp" alt="Dijeesh Padinharethil" class="slide">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+    <div class="about-content">
+      <p>I'm an engineering leader with <strong>18+ years</strong> of experience building and scaling cloud infrastructure, Kubernetes platforms, and SRE organizations. I specialize in designing high-scale, cost-efficient systems across AWS, GCP, and Azure, with a strong focus on Kubernetes, containers, and AI/GPU workloads.</p>
+      <p>I currently lead Platform and R&D at <strong>Sedai</strong>, where I built a multi-cloud platform from the ground up and drive research in autonomous cloud optimization. My work spans Kubernetes cost optimization (including Karpenter tuning and node lifecycle management), GPU workload efficiency, and large-scale platform reliability — helping enterprise customers reduce cloud and AI infrastructure costs by <strong>30–40%</strong>.</p>
+      <p>Previously, I led a 30–40 member cloud operations and SRE organization at <strong>Network Redux</strong>, where I founded and scaled the Managed AWS Services practice into a primary revenue driver. That experience shaped my approach to engineering leadership: combining deep technical rigor with strong systems thinking, team design, and operational discipline.</p>
+      <p>I'm recognized as an <strong><a href="https://builder.aws.com/community/heroes/DijeeshPadinharethil" target="_blank">AWS Container Hero</a></strong> by Amazon Web Services for sustained contributions to the cloud-native ecosystem. I actively contribute to the community as an organizer of <a href="https://www.meetup.com/awsugkochi/" target="_blank">AWS User Group Kochi</a> and <a href="https://community.cncf.io/cloud-native-kochi/" target="_blank">CNCF Kochi</a>, and through events like AWS Community Day and Kubernetes Community Day.</p>
+      <p>I'm particularly interested in the intersection of cloud infrastructure and AI — where efficiency, reliability, and cost control are becoming core competitive advantages.</p>
+      <p>Available to help design and optimize cloud platforms, Kubernetes environments, and AI/GPU workloads at scale. <a href="https://calendly.com/dijeeshpnair/technical-consultation-with-dijeesh" target="_blank">Schedule a call →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills-categories">
+      <div class="skill-category">
+        <h4><i class="fas fa-microchip"></i> AI & GPU Infrastructure</h4>
+        <div class="skills-grid">
+          {{ range (slice "GPU Optimization" "AI Infra Cost Management" "LLM Infrastructure" "Karpenter" "GPU Observability" "Prompt Engineering") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-server"></i> Infrastructure & Networking</h4>
+        <div class="skills-grid">
+          {{ range (slice "Linux" "Networking" "Bare Metal" "Private Cloud" "XenServer" "VMware") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-cloud"></i> Cloud Platforms</h4>
+        <div class="skills-grid">
+          {{ range (slice "AWS" "GCP" "Azure" "Multi-cloud Architecture" "Hybrid Cloud" "Airgapped Cloud") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-dharmachakra"></i> Containers & Orchestration</h4>
+        <div class="skills-grid">
+          {{ range (slice "Kubernetes" "EKS" "GKE" "AKS" "Docker" "Helm" "ArgoCD" "GitOps" "Kustomize" "k3s" "Rancher") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-code-branch"></i> DevOps & CI/CD</h4>
+        <div class="skills-grid">
+          {{ range (slice "Terraform" "Ansible" "Jenkins" "GitHub Actions" "IaC" "Deployment Automation") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-heartbeat"></i> SRE & Observability</h4>
+        <div class="skills-grid">
+          {{ range (slice "Prometheus" "Grafana" "OpenTelemetry" "VictoriaMetrics" "Incident Management" "SLA/SLO") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4><i class="fas fa-users-cog"></i> Leadership</h4>
+        <div class="skills-grid">
+          {{ range (slice "Engineering Management" "Distributed Teams" "Hiring & Mentoring" "Solution Architecture" "FinOps" "Work Ethics") }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section" id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Director of Engineering – Platform & R&D</h3>
+            <span class="timeline-company">Sedai</span>
+            <span class="timeline-date">Mar 2022 – Present</span>
+          </div>
+          <ul>
+            <li>Led R&D for Kubernetes optimization including GPU workload optimization, Karpenter tuning, and autonomous node pool optimization for EKS, GKE, and AKS</li>
+            <li>Architected Sedai's multi-cloud platform infrastructure from the ground up across AWS, GCP, and Azure</li>
+            <li>Owned end-to-end BYOC on-premises installations for major US enterprise clients</li>
+            <li>Partnered with enterprises to deliver 30–40% reductions in cloud spend</li>
+            <li>Led go-to-market availability on Spectro Cloud, AWS, and Azure Marketplaces</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Cloud Native Consultant</h3>
+            <span class="timeline-company">Zappyhire</span>
+            <span class="timeline-date">Feb 2022 – Jul 2022</span>
+          </div>
+          <ul>
+            <li>Led end-to-end infrastructure modernization — containerizing applications, implementing GitOps, migrating to Amazon EKS</li>
+            <li>Delivered dynamic, highly available infrastructure achieving 100% uptime for production services</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Associate Director – Cloud Services</h3>
+            <span class="timeline-company">Network Redux</span>
+            <span class="timeline-date">Jan 2019 – Feb 2022</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--color-text);margin-bottom:12px;">Led a 30–40 member cloud operations and SRE organization, founded and scaled the Managed AWS Services practice into a primary revenue driver. This experience shaped my approach to engineering leadership: combining deep technical rigor with strong systems thinking, team design, and operational discipline.</p>
+          <ul>
+            <li>Led 30–40 member cloud operations team across India and the US</li>
+            <li>Owned end-to-end SRE and DevOps for high-profile clients</li>
+            <li>Helped enterprise clients achieve PCI-DSS certification across AWS and private cloud</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Lead Operations Engineer → Senior Roles</h3>
+            <span class="timeline-company">Network Redux</span>
+            <span class="timeline-date">Mar 2012 – Jan 2019</span>
+          </div>
+          <ul>
+            <li>Founded and built Network Redux's Managed AWS Services practice from scratch — became the company's leading revenue source</li>
+            <li>Led cloud migrations for multiple on-premises datacenter customers to AWS</li>
+            <li>Architected highly available, scalable AWS infrastructure with Kubernetes orchestration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3>Earlier Roles</h3>
+            <span class="timeline-company">MST / Bobcares (Poornam)</span>
+            <span class="timeline-date">Sep 2008 – Mar 2012</span>
+          </div>
+          <ul>
+            <li>System Administrator & Production Support Team Lead at MST — built infrastructure from scratch, managed production for global mobile sportsbook</li>
+            <li>Internal System Administrator → Team Lead at Bobcares — managed 300+ Linux workstations, led 6-member team</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Recent Blog Posts -->
+<section class="section section-alt" id="blog">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Recent Posts</h2>
+      <a href="/blog/" class="section-link">View all →</a>
+    </div>
+    <div class="recent-posts-list">
+      {{ range first 6 (where .Site.RegularPages "Section" "blog") }}
+      <a href="{{ .Permalink }}" class="recent-post-item">
+        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+        <span>{{ .Title }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Community -->
+<section class="section" id="community">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Community</h2>
+      <a href="/community/" class="section-link">View all →</a>
+    </div>
+    <div class="community-highlights">
+      <div class="highlight-item">
+        <i class="fas fa-award"></i>
+        <div>
+          <h4><a href="https://builder.aws.com/community/heroes/DijeeshPadinharethil" target="_blank">AWS Container Hero</a></h4>
+          <p>Recognized by Amazon Web Services for sustained contributions to the cloud and developer community</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <i class="fas fa-calendar-check"></i>
+        <div>
+          <h4>AWS Community Day Kochi</h4>
+          <p>Organizer — 2019, 2022, 2023, 2024, 2025</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <i class="fas fa-calendar-check"></i>
+        <div>
+          <h4>Kubernetes Community Day Kochi 2026</h4>
+          <p>Organizer</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <i class="fas fa-users"></i>
+        <div>
+          <h4>AWS User Group Kochi & CNCF Kochi Chapter</h4>
+          <p>Organizer — Regular meetups, workshops, and bootcamps</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <i class="fas fa-microphone-alt"></i>
+        <div>
+          <h4>Speaker & Educator</h4>
+          <p>AWS and CNCF meetups, Cloud & DevOps bootcamps at colleges across Kerala</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <i class="fab fa-whatsapp"></i>
+        <div>
+          <h4>Cloud Communities Kochi — WhatsApp Groups</h4>
+          <p>AWS User Group Kochi · CNCG Kochi · Kochi IT Job Referrals · AWS SMEs · AWS Student Clubs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fas fa-calendar"></i>
+        <h4>Consultation</h4>
+        <a href="{{ .Site.Params.contact.calendly }}" target="_blank">Schedule a Meeting</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <a href="mailto:{{ .Site.Params.social.email }}">{{ .Site.Params.social.email }}</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        <h4>LinkedIn</h4>
+        <a href="{{ .Site.Params.social.linkedin }}" target="_blank">Connect</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Location</h4>
+        <p>{{ .Site.Params.contact.location }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

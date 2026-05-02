@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="section page-header">
+  <div class="container">
+    <h1 class="page-title">Community</h1>
+    <p class="page-desc">Events, talks, and community involvement.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="community-timeline">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="community-item">
+        <time class="community-date">{{ with .Params.endDate }}{{ . }}{{ else }}{{ .Date.Format "Jan 2006" }} – Present{{ end }}</time>
+        <div class="community-content">
+          <h3>{{ .Title }}</h3>
+          <div class="article-content">{{ .Content }}</div>
+          {{ with .Params.videos }}
+          <div class="community-videos">
+            {{ range . }}
+            <a href="https://www.youtube.com/watch?v={{ .id }}" target="_blank" class="community-video-link">
+              <img src="https://img.youtube.com/vi/{{ .id }}/mqdefault.jpg" alt="{{ .title }}" loading="lazy">
+              <span>{{ .title }}</span>
+            </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

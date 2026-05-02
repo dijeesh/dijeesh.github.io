@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">{{ .Date.Format "January 2, 2006" }}</time>
+      <span class="article-reading-time">· {{ math.Round (div (countwords .Content) 225.0) }} min read</span>
+      <h1 class="article-title">{{ .Title }}</h1>
+      <div class="post-tags">
+        {{ range .Params.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    </header>
+    <div class="article-content">
+      {{ .Content }}
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+{{ end }}
