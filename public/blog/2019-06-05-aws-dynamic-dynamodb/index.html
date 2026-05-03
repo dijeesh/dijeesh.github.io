@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic DynamoDB for Autoscaling Amazon DynamoDB | Dijeesh Padinharethil</title>
+  <meta name="description" content="Dynamic DynamoDB for Autoscaling Amazon DynamoDB">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/blog/2019-06-05-aws-dynamic-dynamodb/">
+
+  
+  <meta property="og:title" content="Dynamic DynamoDB for Autoscaling Amazon DynamoDB">
+  <meta property="og:description" content="Dynamic DynamoDB for Autoscaling Amazon DynamoDB">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/blog/2019-06-05-aws-dynamic-dynamodb/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dynamic DynamoDB for Autoscaling Amazon DynamoDB">
+  <meta name="twitter:description" content="Dynamic DynamoDB for Autoscaling Amazon DynamoDB">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">June 5, 2019</time>
+      <span class="article-reading-time">· 1 min read</span>
+      <h1 class="article-title">Dynamic DynamoDB for Autoscaling Amazon DynamoDB</h1>
+      <div class="post-tags">
+        
+        <span class="tag">AWS</span>
+        
+        <span class="tag">dynamic-dynamodb</span>
+        
+        <span class="tag">dynamodb</span>
+        
+        <span class="tag">nosql</span>
+        
+        <span class="tag">dijeeshpnair</span>
+        
+        <span class="tag">devops</span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      <h1 id="autoscaling-amazon-dynamodb">Autoscaling Amazon DynamoDB</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In this article, I would like to share how to deploy <strong>dynamic-dynamodb</strong> for managing and scaling Amazon DynamoDB NoSQL Databases.</p>
+<p>Amazon Dynamic DynamoDB  is super fast, flexible, consistent and fully managed NoSQL database service from Amazon.  DynamoDB synchronously replicates data across three different facilities in an AWS region. This will ensure high availability and data durability. It&rsquo;s allow horizontal scaling manually.  But whois going to sit-down and monitor the table capacity and scale up/down whenever required.  Thanks to <a href="https://github.com/sebdah/dynamic-dynamodb">Sebastian Dahlgren</a> for this wonderful tool called dynamic-dynamodb.</p>
+<p>dynamic-dynamodb will help you to avoid manual intervention for scaling activities by monitoring and scaling up/down based on the policies we defined.</p>
+<p>dynamic-dynamodb can be either deployed using the <a href="https://github.com/sebdah/dynamic-dynamodb/blob/master/cloudformation-templates/dynamic-dynamodb.json">cloud-formation script</a> they provided or manually inside your private subnet by following the instructions given bellow.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Dynamic DynamoDB is a small script that will monitor DynamoDB in specified intervals and scale up / down the DynamoDB table as per the policy we configured.</p>
+<h2 id="architecture">Architecture</h2>
+<p style="text-align:justify;">
+Here is a sample architecture diagram. </P>
+<p><img src="https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/dynamic_dynamoDB.jpg" alt="Architecture Diagram"></p>
+<p style="text-align:justify;">
+<p>In this scenario, I do have a custom VPC created for Web Application with 2 Public Subnets in each availability zone for Load Balancers and bastion nodes. Below that two private subnets in each availability zone for Web Service EC2 instances,  RDS multi AZ deployment for database services and below that we do have two subnets ( 1 in each AZ) for management nodes and I have configured a dynamic-dynamodb instance inside an autoscaling group with minimum 1 node running at time.</p>
+</p> <br>
+<ul>
+<li>
+<p>dynamic-dynamodb instance is running securely in private subnets.</p>
+</li>
+<li>
+<p>dynamic-dynamodb&rsquo;s high availability is ensured by autoscaling group.</p>
+</li>
+</ul>
+<p>In progress&hellip;..</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

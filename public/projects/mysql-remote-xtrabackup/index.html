@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Remote MySQL Backups with Percona Xtrabackup | Dijeesh Padinharethil</title>
+  <meta name="description" content="Lightweight bash script for automated, streamed MySQL backups to a remote vault using Percona Xtrabackup — scheduled, compressed, and battle-tested.">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/projects/mysql-remote-xtrabackup/">
+
+  
+  <meta property="og:title" content="Automated Remote MySQL Backups with Percona Xtrabackup">
+  <meta property="og:description" content="Lightweight bash script for automated, streamed MySQL backups to a remote vault using Percona Xtrabackup — scheduled, compressed, and battle-tested.">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/projects/mysql-remote-xtrabackup/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automated Remote MySQL Backups with Percona Xtrabackup">
+  <meta name="twitter:description" content="Lightweight bash script for automated, streamed MySQL backups to a remote vault using Percona Xtrabackup — scheduled, compressed, and battle-tested.">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <h1 class="article-title">Automated Remote MySQL Backups with Percona Xtrabackup</h1>
+      <p class="project-role" style="font-size:0.9rem;margin-bottom:12px;">Lead Operations Engineer – DevOps · Network Redux</p>
+      <div class="post-tags">
+        
+        <span class="tag">MySQL</span>
+        
+        <span class="tag">Percona</span>
+        
+        <span class="tag">Xtrabackup</span>
+        
+        <span class="tag">Bash</span>
+        
+        <span class="tag">Backup</span>
+        
+        <span class="tag">Linux</span>
+        
+      </div>
+      <a href="https://github.com/dijeesh/mysql_remote_xtrabackup" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+    </header>
+    <div class="article-content">
+      <p>Built a lightweight backup automation script for streaming MySQL backups to a remote vault using Percona Xtrabackup. Deployed across multiple production environments at Network Redux.</p>
+<h2 id="context">Context</h2>
+<p>Production MySQL databases needed reliable, automated backups pushed to a remote vault — without locking tables or impacting application performance. The solution had to be simple enough to deploy via cron and robust enough for production use.</p>
+<h2 id="what-i-did">What I Did</h2>
+<ul>
+<li>Built a bash script using Percona Xtrabackup for hot, non-blocking MySQL backups</li>
+<li>Implemented SSH-based streaming to push compressed backups to a remote vault</li>
+<li>Configured cron-based scheduling — every 4 hours by default</li>
+<li>Open-sourced the script and documentation on GitHub</li>
+</ul>
+<h2 id="results">Results</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Detail</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Downtime</td>
+          <td><strong>Zero</strong> — hot backups, no table locks</td>
+      </tr>
+      <tr>
+          <td>Automation</td>
+          <td>Unattended, <strong>4-hour cron schedule</strong></td>
+      </tr>
+      <tr>
+          <td>Production use</td>
+          <td>Deployed across <strong>multiple environments</strong></td>
+      </tr>
+      <tr>
+          <td>Open source</td>
+          <td><a href="https://github.com/dijeesh/mysql_remote_xtrabackup">GitHub repo</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="stack">Stack</h2>
+<p>MySQL · Percona Xtrabackup · Bash · SSH · Cron · Linux</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/projects/" class="btn btn-outline">← Back to Projects</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

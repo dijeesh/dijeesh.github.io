@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heroku to Amazon EKS — Seamless Migration for a HealthTech Platform | Dijeesh Padinharethil</title>
+  <meta name="description" content="Migrated a dental aligner platform from Heroku to Amazon EKS — achieving 40–50% cost reduction, eliminating scalability issues, and completing the cutover in under 30 minutes.">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/projects/heroku-to-eks-migration-orthofx/">
+
+  
+  <meta property="og:title" content="Heroku to Amazon EKS — Seamless Migration for a HealthTech Platform">
+  <meta property="og:description" content="Migrated a dental aligner platform from Heroku to Amazon EKS — achieving 40–50% cost reduction, eliminating scalability issues, and completing the cutover in under 30 minutes.">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/projects/heroku-to-eks-migration-orthofx/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Heroku to Amazon EKS — Seamless Migration for a HealthTech Platform">
+  <meta name="twitter:description" content="Migrated a dental aligner platform from Heroku to Amazon EKS — achieving 40–50% cost reduction, eliminating scalability issues, and completing the cutover in under 30 minutes.">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <h1 class="article-title">Heroku to Amazon EKS — Seamless Migration for a HealthTech Platform</h1>
+      <p class="project-role" style="font-size:0.9rem;margin-bottom:12px;">Independent Consultant · 2022</p>
+      <div class="post-tags">
+        
+        <span class="tag">AWS</span>
+        
+        <span class="tag">EKS</span>
+        
+        <span class="tag">Heroku</span>
+        
+        <span class="tag">Migration</span>
+        
+        <span class="tag">ArgoCD</span>
+        
+        <span class="tag">Aurora</span>
+        
+        <span class="tag">CloudFront</span>
+        
+        <span class="tag">WAF</span>
+        
+        <span class="tag">Bitbucket</span>
+        
+      </div>
+      
+    </header>
+    <div class="article-content">
+      <p>Migrated the entire platform for a US-based HealthTech startup from Heroku to Amazon EKS — eliminating scalability bottlenecks, reducing costs by 40–50%, and completing the production cutover in under 30 minutes with zero issues.</p>
+<h2 id="context">Context</h2>
+<p>The company, a dental aligner startup, was running their full platform on Heroku. Monthly spend was high, the platform faced frequent disruptions, and scalability had become a bottleneck. They needed a stable, cost-effective foundation built for future growth.</p>
+<h2 id="what-i-did">What I Did</h2>
+<p><strong>Infrastructure Design</strong></p>
+<ul>
+<li>Provisioned AWS Accounts with Organization Units — dedicated accounts for Development, Staging, and Production following security best practices</li>
+<li>Designed custom network architecture with centralized accessibility</li>
+</ul>
+<p><strong>Application Modernization</strong></p>
+<ul>
+<li>Helped the team containerize all application services for Kubernetes deployment</li>
+</ul>
+<p><strong>Platform Build</strong></p>
+<ul>
+<li>Deployed <strong>Amazon EKS</strong> as the compute platform</li>
+<li>Set up <strong>Bitbucket</strong> with self-hosted runners for CI/CD and <strong>ArgoCD</strong> for GitOps deployments</li>
+<li>Configured <strong>ALB with WAF</strong> for secure public API exposure</li>
+<li>Deployed <strong>CloudFront + S3</strong> distributions for static site hosting</li>
+<li>Provisioned <strong>Amazon Aurora Serverless</strong> for the database layer</li>
+<li>Implemented observability stack with <strong>Prometheus, Loki, and Grafana</strong></li>
+<li>Documented all infrastructure and standard operating procedures</li>
+</ul>
+<p><strong>Migration Execution</strong></p>
+<ul>
+<li>Built a POC environment first and ran end-to-end validation tests</li>
+<li>Planned and scheduled migrations for each platform layer independently</li>
+<li>Set up <strong>database replication from Heroku to Aurora</strong> using chained replication</li>
+<li>In a scheduled maintenance window, <strong>cut over the entire platform in under 30 minutes</strong> — zero issues</li>
+</ul>
+<blockquote>
+<p>Planning and execution by documenting every bit of the workflow is the key.</p>
+</blockquote>
+<h2 id="results">Results</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Before (Heroku)</th>
+          <th>After (EKS)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Cost reduction</td>
+          <td>—</td>
+          <td><strong>40–50%</strong></td>
+      </tr>
+      <tr>
+          <td>Scalability</td>
+          <td>Frequent bottlenecks</td>
+          <td>Dynamic, auto-scaling</td>
+      </tr>
+      <tr>
+          <td>Cutover time</td>
+          <td>—</td>
+          <td><strong>&lt; 30 minutes</strong></td>
+      </tr>
+      <tr>
+          <td>Downtime during migration</td>
+          <td>—</td>
+          <td><strong>Zero issues</strong></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="stack">Stack</h2>
+<p>Amazon EKS · Aurora Serverless · CloudFront · S3 · ALB · WAF · ArgoCD · Bitbucket CI · Docker · Prometheus · Loki · Grafana · AWS Organizations</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/projects/" class="btn btn-outline">← Back to Projects</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting up Single node Kubernetes in AWS using Kubeadm | Dijeesh Padinharethil</title>
+  <meta name="description" content="Setting up Single node Kubernetes in AWS using Kubeadm">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/blog/2020-01-05-setting-up-single-node-k8s-in-aws/">
+
+  
+  <meta property="og:title" content="Setting up Single node Kubernetes in AWS using Kubeadm">
+  <meta property="og:description" content="Setting up Single node Kubernetes in AWS using Kubeadm">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/blog/2020-01-05-setting-up-single-node-k8s-in-aws/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Setting up Single node Kubernetes in AWS using Kubeadm">
+  <meta name="twitter:description" content="Setting up Single node Kubernetes in AWS using Kubeadm">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">January 5, 2020</time>
+      <span class="article-reading-time">· 3 min read</span>
+      <h1 class="article-title">Setting up Single node Kubernetes in AWS using Kubeadm</h1>
+      <div class="post-tags">
+        
+        <span class="tag">devops</span>
+        
+        <span class="tag">sysops</span>
+        
+        <span class="tag">aws</span>
+        
+        <span class="tag">EKS</span>
+        
+        <span class="tag">kubernetes</span>
+        
+        <span class="tag">containerization</span>
+        
+        <span class="tag">dijeeshpnair</span>
+        
+        <span class="tag">single-node</span>
+        
+        <span class="tag">k8s</span>
+        
+        <span class="tag">ubuntu</span>
+        
+        <span class="tag">kubeadm</span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      <h3 id="introduction">Introduction</h3>
+<p><img src="https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/2020-01-k8s-single-node.png" alt="k8s"></p>
+<h3 id="kubernetes">Kubernetes</h3>
+<p>Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management. It was originally designed by Google, and is now maintained by the Cloud Native Computing Foundation.</p>
+<h3 id="single-node-kubernetes-cluster-on-aws">Single Node Kubernetes Cluster on AWS</h3>
+<p>In this article, I will share the steps to be done to set up a Single Node Kubernetes Cluster on AWS using kubeadm.  This is only for testing and learning purposes.</p>
+<p><br> <br></p>
+<h3 id="steps">Steps</h3>
+<h4 id="1-create-a-vpc-with-minimum-1-public-subnet">1. Create a VPC with minimum 1 Public Subnet</h4>
+<p><br> <br></p>
+<h4 id="2-create-an-security-groups">2. Create an Security Groups</h4>
+<p>Create an Security Group for the Kubernetes Instances ( Eg: SG_K8S_CLUSTER_INSTANCES)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>   Allow all connections from the VPC CIDR
+</span></span><span style="display:flex;"><span>   Allow 6443 from any Public IP from which you would like to manage the cluster
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="3-create-iam-policies">3. Create IAM Policies</h4>
+<p>kubernetes-master-node-policy</p>
+<br> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f1fa8c">&#34;Version&#34;</span>: <span style="color:#f1fa8c">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f1fa8c">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;Effect&#34;</span>: <span style="color:#f1fa8c">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;autoscaling:DescribeAutoScalingGroups&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;autoscaling:DescribeLaunchConfigurations&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;autoscaling:DescribeTags&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeInstances&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeRegions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeRouteTables&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeSecurityGroups&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeSubnets&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeVolumes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:CreateSecurityGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:CreateTags&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:CreateVolume&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:ModifyInstanceAttribute&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:ModifyVolume&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:AttachVolume&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:AuthorizeSecurityGroupIngress&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:CreateRoute&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DeleteRoute&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DeleteSecurityGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DeleteVolume&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DetachVolume&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:RevokeSecurityGroupIngress&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;ec2:DescribeVpcs&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:AddTags&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:AttachLoadBalancerToSubnets&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:ApplySecurityGroupsToLoadBalancer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:CreateLoadBalancer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:CreateLoadBalancerPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:CreateLoadBalancerListeners&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:ConfigureHealthCheck&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DeleteLoadBalancer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DeleteLoadBalancerListeners&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeLoadBalancers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeLoadBalancerAttributes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DetachLoadBalancerFromSubnets&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DeregisterInstancesFromLoadBalancer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:ModifyLoadBalancerAttributes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:RegisterInstancesWithLoadBalancer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:AddTags&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:CreateListener&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:CreateTargetGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DeleteListener&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DeleteTargetGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeListeners&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeLoadBalancerPolicies&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeTargetGroups&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:DescribeTargetHealth&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:ModifyListener&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:ModifyTargetGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:RegisterTargets&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;elasticloadbalancing:SetLoadBalancerPoliciesOfListener&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;iam:CreateServiceLinkedRole&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;kms:DescribeKey&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><br> <br></p>
+<p>kubernetes-worker-node-policy</p>
+<br> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;Version&#34;</span>: <span style="color:#f1fa8c">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f1fa8c">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>              <span style="color:#f1fa8c">&#34;Effect&#34;</span>: <span style="color:#f1fa8c">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f1fa8c">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ec2:DescribeInstances&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ec2:DescribeRegions&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:GetAuthorizationToken&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:BatchCheckLayerAvailability&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:GetDownloadUrlForLayer&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:GetRepositoryPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:DescribeRepositories&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:ListImages&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#f1fa8c">&#34;ecr:BatchGetImage&#34;</span>
+</span></span><span style="display:flex;"><span>              ],
+</span></span><span style="display:flex;"><span>              <span style="color:#f1fa8c">&#34;Resource&#34;</span>: <span style="color:#f1fa8c">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>          } 
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="4-create-iam-role-for-the-ec2-instance">4. Create IAM role for the EC2 instance</h4>
+<p>Create IAM role for the EC2 instance (Ref: <a href="https://github.com/kubernetes/cloud-provider-aws">https://github.com/kubernetes/cloud-provider-aws</a>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Create Role       : kubernetes-master-node-role 
+</span></span><span style="display:flex;"><span>Attach Policies   : kubernetes-master-node-policy, kubernetes-worker-node-policy
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="5-launch-an-ec2-instance">5. Launch an EC2 Instance</h4>
+<p>Launch an EC2 Instance in VPC Public Subnet (Ubuntu 16.04) + Attach the Security Group you have created in Step 2 and Attach IAM Role created in Step 4</p>
+<p><br> <br></p>
+<h4 id="6-install-system-updates--set-ec2-hostname">6. Install System updates + Set EC2 Hostname</h4>
+<p>Install System updates + Set EC2 Hostname (The hostname of each node must match the EC2 Private DNS entry for the instance)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>sudo hostnamectl set-hostname $(curl -s http://169.254.169.254/latest/meta-data/local-hostname)
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="7-setup-aws-tags-resources-used-by-the-cluster-must-have-specific-aws-tags-assigned-to-them">7. Setup AWS Tags, Resources used by the cluster must have specific AWS tags assigned to them.</h4>
+<p>Attach following Tag to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Key:    kubernetes.io/cluster/kubernetes    (kubernetes.io/cluster/&lt;cluster-name&gt;) 
+</span></span><span style="display:flex;"><span>Value:  owned
+</span></span></code></pre></div><ol>
+<li>EC2 Instances</li>
+<li>VPC</li>
+<li>VPC Subnets</li>
+<li>VPC Route Tables</li>
+<li>VPC Internet gateway</li>
+<li>VPC Security Group</li>
+</ol>
+<p><br> <br></p>
+<h4 id="8-install-docker">8. Install Docker</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>apt<span style="color:#ff79c6">-</span>get install     apt<span style="color:#ff79c6">-</span>transport<span style="color:#ff79c6">-</span>https     ca<span style="color:#ff79c6">-</span>certificates     curl     gnupg<span style="color:#ff79c6">-</span>agent     software<span style="color:#ff79c6">-</span>properties<span style="color:#ff79c6">-</span>common
+</span></span><span style="display:flex;"><span>curl <span style="color:#ff79c6">-</span>fsSL https:<span style="color:#ff79c6">//</span>download<span style="color:#ff79c6">.</span>docker<span style="color:#ff79c6">.</span>com<span style="color:#ff79c6">/</span>linux<span style="color:#ff79c6">/</span>ubuntu<span style="color:#ff79c6">/</span>gpg <span style="color:#ff79c6">|</span> sudo apt<span style="color:#ff79c6">-</span>key add <span style="color:#ff79c6">-</span>
+</span></span><span style="display:flex;"><span>apt<span style="color:#ff79c6">-</span>key fingerprint <span style="color:#bd93f9">0</span>EBFCD88
+</span></span><span style="display:flex;"><span>sudo add<span style="color:#ff79c6">-</span>apt<span style="color:#ff79c6">-</span>repository  <span style="color:#f1fa8c">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&#34;</span>
+</span></span><span style="display:flex;"><span>apt<span style="color:#ff79c6">-</span>get update
+</span></span><span style="display:flex;"><span>apt<span style="color:#ff79c6">-</span>get install docker<span style="color:#ff79c6">-</span>ce docker<span style="color:#ff79c6">-</span>ce<span style="color:#ff79c6">-</span>cli containerd<span style="color:#ff79c6">.</span>io
+</span></span><span style="display:flex;"><span>systemctl start docker
+</span></span><span style="display:flex;"><span>systemctl enable docker
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="9-install-kubeadm-kubelet-kubectl">9. Install Kubeadm, kubelet, kubectl</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+</span></span><span style="display:flex;"><span>echo &#34;deb https://apt.kubernetes.io/ kubernetes-xenial main&#34; &gt; /etc/apt/sources.list.d/kubernetes.list
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt install -y docker-ce kubelet kubeadm kubectl
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="10-create-kubeadm-configuration-file--etckubernetesawsyml-">10. Create kubeadm configuration file ( /etc/kubernetes/aws.yml )</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>apiVersion: kubeadm.k8s.io/v1beta2
+</span></span><span style="display:flex;"><span>kind: ClusterConfiguration
+</span></span><span style="display:flex;"><span>networking:
+</span></span><span style="display:flex;"><span>  serviceSubnet: &#34;10.100.0.0/16&#34;
+</span></span><span style="display:flex;"><span>  podSubnet: &#34;10.244.0.0/16&#34;
+</span></span><span style="display:flex;"><span>apiServer:
+</span></span><span style="display:flex;"><span>  extraArgs:
+</span></span><span style="display:flex;"><span>    cloud-provider: &#34;aws&#34;
+</span></span><span style="display:flex;"><span>controllerManager:
+</span></span><span style="display:flex;"><span>  extraArgs:
+</span></span><span style="display:flex;"><span>    cloud-provider: &#34;aws&#34;
+</span></span></code></pre></div><br> 
+<p>(Makes sure to replace your VPC CIDR)</p>
+<p><br> <br></p>
+<h4 id="11-bootstrap-kubernetes">11. Bootstrap Kubernetes</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubeadm init --config=/etc/kubernetes/aws.yml
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="12-once-the-setup-is-complete-you-will-get-a-message-as-follows--additional-details">12. Once the setup is complete, You will get a message as follows + Additional details</h4>
+<p>Your Kubernetes control-plane has initialized successfully!</p>
+<p><br> <br></p>
+<h4 id="13-configure-kubectl-you-need-to-run-the-following-as-a-regular-user">13. Configure kubectl (You need to run the following as a regular user)</h4>
+<p>Configure kubectl</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>mkdir -p $HOME/.kube
+</span></span><span style="display:flex;"><span>sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+</span></span><span style="display:flex;"><span>sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="14-install-pod-network-to-the-cluster">14. Install Pod Network to the Cluster</h4>
+<p>Install Pod Network to the Cluster ( Ref: <a href="https://docs.projectcalico.org/v3.11/getting-started/kubernetes/">https://docs.projectcalico.org/v3.11/getting-started/kubernetes/</a>)</p>
+<p>You should now deploy a pod network to the cluster.
+Run &ldquo;kubectl apply -f [podnetwork].yaml&rdquo; with one of the options listed at:
+<a href="https://kubernetes.io/docs/concepts/cluster-administration/addons/">https://kubernetes.io/docs/concepts/cluster-administration/addons/</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="15-control-plane-node-isolation">15. Control Plane node isolation</h4>
+<p>By default, your cluster will not schedule pods on the control-plane node for security reasons. Run following command to enable it for scheduling</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl taint nodes --all node-role.kubernetes.io/master-
+</span></span></code></pre></div><p><br> <br></p>
+<h4 id="16-adding-additional-nodes">16 Adding additional Nodes</h4>
+<p>In case required, you can add additional nodes to this cluster by running following command as root after retreiving token and cert hash from the cluster</p>
+<p>kubeadm join x.x.x.x:6443 &ndash;token xxxx.xxxx &ndash;discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxx</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

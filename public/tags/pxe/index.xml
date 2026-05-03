@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXE on Dijeesh Padinharethil</title>
+    <link>http://localhost:1313/tags/pxe/</link>
+    <description>Recent content in PXE on Dijeesh Padinharethil</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend</title>
+      <link>http://localhost:1313/projects/meltwater-elasticsearch-cluster/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/meltwater-elasticsearch-cluster/</guid>
+      <description>&lt;p&gt;Designed and built one of the largest search indexing clusters for a global media intelligence company — 52 bare-metal nodes in Network Redux&amp;rsquo;s private cloud. Completed over a single weekend, in between flights from Portland to Kochi.&lt;/p&gt;&#xA;&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;&#xA;&lt;p&gt;A global media intelligence company needed a large-scale Elasticsearch cluster for search indexing, deployed on dedicated bare-metal infrastructure in a private cloud environment. The project required end-to-end delivery — from network architecture through OS provisioning to production handover — on an aggressive timeline.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install and Configure Gitlab CE Server in AWS | Dijeesh Padinharethil</title>
+  <meta name="description" content="Install and Configure Gitlab CE Server in AWS">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/blog/2019-06-05-setup-and-secure-private-gitlab-server/">
+
+  
+  <meta property="og:title" content="Install and Configure Gitlab CE Server in AWS">
+  <meta property="og:description" content="Install and Configure Gitlab CE Server in AWS">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/blog/2019-06-05-setup-and-secure-private-gitlab-server/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Install and Configure Gitlab CE Server in AWS">
+  <meta name="twitter:description" content="Install and Configure Gitlab CE Server in AWS">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">June 5, 2019</time>
+      <span class="article-reading-time">· 2 min read</span>
+      <h1 class="article-title">Install and Configure Gitlab CE Server in AWS</h1>
+      <div class="post-tags">
+        
+        <span class="tag">devops</span>
+        
+        <span class="tag">sysops</span>
+        
+        <span class="tag">gitlab-ce</span>
+        
+        <span class="tag">git</span>
+        
+        <span class="tag">centos7</span>
+        
+        <span class="tag">devops</span>
+        
+        <span class="tag">dijeeshpnair</span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      <h2 id="introduction">Introduction</h2>
+<p>Hey there, this is the first part of my blog series <code>Getting started with CI/CD on AWS platform using GitLab CE</code></p>
+<p>GitLab Community Edition (CE) is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD and much more, check <a href="https://gitlab.com/gitlab-org/gitlab-ce">official documentation</a> for more information.  Due to security considerations, we have provisioned our own private GitLab-CE server for many of our clients builds even though gitlab.com hosted solution and many pre-configured AMIs are available in AWS. Here are the steps to set-up a Gitlab-CE server.</p>
+<h2 id="provision-ec2-instance">Provision EC2 Instance</h2>
+<ul>
+<li>
+<p>Provision a t2.medium instance [ CentOS 7 AMI ]</p>
+</li>
+<li>
+<p>Open HTTP, HTTPS and SSH connections in Security Group settings</p>
+</li>
+<li>
+<p>Enable basic monitoring for the EC2 instance ( StatusCheckFailed )</p>
+</li>
+<li>
+<p>Assign an EIP</p>
+</li>
+<li>
+<p>Set host level firewall rules to allow incoming SSH, HTTP/HTTPS connections only</p>
+<p>Basic System setup</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Install system updates</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  yum update -y
+</span></span></code></pre></div><ul>
+<li>Disable SELinux</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  sed -i &#39;s/SELINUX=enforcing/SELINUX=disabled/g&#39; /etc/selinux/config
+</span></span></code></pre></div><ul>
+<li>Install basic system management tools</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>  yum install <span style="color:#ff79c6">-</span>y net<span style="color:#ff79c6">-</span>tools wget curl lsof screen ntp dstat
+</span></span></code></pre></div><ul>
+<li>Disable SSH Password Authentification</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  sed -i &#39;s/PasswordAuthentication\ yes/PasswordAuthentication\ no/g&#39; /etc/ssh/sshd_config
+</span></span></code></pre></div><ul>
+<li>Set static system hostname</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  hostnamectl set-hostname gitlab.yourdomain.com
+</span></span><span style="display:flex;"><span>  hostnamectl set-hostname &#34;gitlab.yourdomain.com&#34; --pretty
+</span></span><span style="display:flex;"><span>  hostnamectl set-hostname gitlab.yourdomain.com --static
+</span></span><span style="display:flex;"><span>  hostnamectl set-hostname gitlab.yourdomain.com --transient
+</span></span></code></pre></div><ul>
+<li>Update /etc/hosts</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  grep $(hostname) /etc/hosts || echo -e &#34;127.1.0.1\t$(hostname)\t$(hostname -s)&#34; &gt;&gt; /etc/hosts
+</span></span></code></pre></div><ul>
+<li>Setup NTP Time Synchronization</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  Edit /etc/ntp.conf and set `server 169.254.169.123 prefer iburst`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  systemctl start ntpd; systemctl enable ntpd
+</span></span></code></pre></div><ul>
+<li>Restart EC2 instance.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  reboot
+</span></span></code></pre></div><h2 id="install-gitlab-ce">Install GitLab CE</h2>
+<ul>
+<li>Install dependencies</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  yum install -y curl policycoreutils-python openssh-server
+</span></span><span style="display:flex;"><span>  systemctl enable sshd
+</span></span><span style="display:flex;"><span>  systemctl start sshd
+</span></span></code></pre></div><ul>
+<li>Install and configure Postfix MTA</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  yum install postfix
+</span></span><span style="display:flex;"><span>  systemctl enable postfix
+</span></span><span style="display:flex;"><span>  systemctl start postfix
+</span></span></code></pre></div><ul>
+<li>Add the GitLab package repository</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+</span></span></code></pre></div><ul>
+<li>Install Gitlab CE</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>sudo EXTERNAL_URL=&#34;http://gitlab.yourdomain.com&#34; yum install -y gitlab-ce
+</span></span></code></pre></div><ul>
+<li>
+<p>Complete the installation</p>
+</li>
+<li>
+<p>Navigate your browser to <a href="http://gitlab.yourdomain.com">http://gitlab.yourdomain.com</a> and you will be redirected to reset root password for your installation.</p>
+</li>
+</ul>
+<h2 id="gitlab-ce-initial-setup">GitLab CE Initial setup</h2>
+<ul>
+<li>
+<p>Go to <a href="http://gitlab.yourdomain.com">http://gitlab.yourdomain.com</a> and login to GitLab using the root credentials you created.</p>
+</li>
+<li>
+<p>Go to profile settings and setup root user&rsquo;s Email account</p>
+</li>
+<li>
+<p>Go to Admin area -  Settings - Sign-up Restrictions and uncheck Sign-up enabled</p>
+</li>
+<li>
+<p>Go to Admin area - Overview: create groups, create users, add users into groups.</p>
+</li>
+</ul>
+<h2 id="gitlab-ce-secure-using-letsencrypt-certificates">GitLab CE Secure using LetsEncrypt Certificates</h2>
+<p>Let&rsquo;s secure our GitLab instance using Free LetsEncrypt SSL Certificates</p>
+<ul>
+<li>Install epel repository</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  yum install epel-release -y
+</span></span></code></pre></div><ul>
+<li>Install Certbot</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  yum install certbot -y
+</span></span></code></pre></div><ul>
+<li>Create directory for LetsEncrypt verification files</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>  mkdir <span style="color:#ff79c6">-</span>p <span style="color:#ff79c6">/</span><span style="color:#ff79c6">var</span><span style="color:#ff79c6">/</span>www<span style="color:#ff79c6">/</span>public<span style="color:#ff79c6">/</span>letsencrypt
+</span></span></code></pre></div><ul>
+<li>Update Gitlab Nginx Configuration</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>  Edit <span style="color:#ff79c6">/</span>etc<span style="color:#ff79c6">/</span>gitlab<span style="color:#ff79c6">/</span>gitlab<span style="color:#ff79c6">.</span>rb <span style="color:#ff79c6">and</span> <span style="color:#ff79c6">in</span> GitLab NGINX add following line
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  nginx[<span style="color:#f1fa8c">&#39;custom_gitlab_server_config&#39;</span>] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;location ^~ /.well-known { root /var/www/public/letsencrypt; }&#34;</span>
+</span></span></code></pre></div><ul>
+<li>Reconfigure GitLab</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  gitlab-ctl reconfigure
+</span></span></code></pre></div><ul>
+<li>Request SSL Certificates</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>  certbot certonly <span style="color:#ff79c6">--</span>webroot <span style="color:#ff79c6">--</span>webroot<span style="color:#ff79c6">-</span>path<span style="color:#ff79c6">=/</span><span style="color:#ff79c6">var</span><span style="color:#ff79c6">/</span>www<span style="color:#ff79c6">/</span>public<span style="color:#ff79c6">/</span>letsencrypt <span style="color:#ff79c6">-</span>d gitlab<span style="color:#ff79c6">.</span>yourdomain<span style="color:#ff79c6">.</span>com
+</span></span></code></pre></div><ul>
+<li>Update Gitlab Nginx Configuration</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  Edit /etc/gitlab/gitlab.rb and
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>1 Update external_url to use https
+</span></span><span style="display:flex;"><span>  external_url &#39;https://gitlab.yourdomain.com&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2 Update redirect_http_to_https settings and set to true
+</span></span><span style="display:flex;"><span>  nginx[&#39;redirect_http_to_https&#39;] = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>3 Specify SSL Certificates
+</span></span><span style="display:flex;"><span>  nginx[&#39;ssl_certificate&#39;] = &#34;/etc/letsencrypt/live/gitlab.yourdomain.com/fullchain.pem&#34;
+</span></span><span style="display:flex;"><span>  nginx[&#39;ssl_certificate_key&#39;] = &#34;/etc/letsencrypt/live/gitlab.yourdomain.com/privkey.pem&#34;
+</span></span></code></pre></div><ul>
+<li>Reconfigure GitLab</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>gitlab-ctl reconfigure
+</span></span></code></pre></div><ul>
+<li>Setup cronjob for SSL renewal</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  crontab -e
+</span></span><span style="display:flex;"><span>  0 2 1 * * root /usr/bin/certbot renew --quiet --renew-hook &#34;/usr/bin/gitlab-ctl restart nginx&#34;
+</span></span></code></pre></div><p><br><br><br>
+<em>Alright, now we have our GitLab instance up and running.</em></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Provisioned EC2 Instance</li>
+<li><input checked="" disabled="" type="checkbox"> Installed GitLab CE</li>
+<li><input checked="" disabled="" type="checkbox"> Configured Users and Groups</li>
+<li><input checked="" disabled="" type="checkbox"> Secured GitLab using LetsEncrypt SSL Certificates</li>
+<li><input checked="" disabled="" type="checkbox"> Enabled auto renewal for LetsEncrypt SSL Certificates
+<br><br><br></li>
+</ul>
+<p><em>Tips :</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> Enable backups for GitLab Instance</li>
+<li><input disabled="" type="checkbox"> Convert the EC2 instance to a reserverd instance for cost savings.
+<br><br><br>
+<em>Happy Coding !!</em></li>
+</ul>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

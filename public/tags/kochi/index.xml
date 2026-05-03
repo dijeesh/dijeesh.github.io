@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kochi on Dijeesh Padinharethil</title>
+    <link>http://localhost:1313/tags/kochi/</link>
+    <description>Recent content in Kochi on Dijeesh Padinharethil</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kochi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Community Day Kochi — Years of Persistence, One Incredible Day</title>
+      <link>http://localhost:1313/blog/2026-04-20-kubernetes-community-day-kochi-2026/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2026-04-20-kubernetes-community-day-kochi-2026/</guid>
+      <description>&lt;p&gt;Back in the early 2020s, we started CNCG Kochi alongside AWS User Group Kochi with a clear intent — &lt;strong&gt;build a strong meetup culture and create a platform for learning and knowledge sharing&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;KCD Kochi was always on our wishlist. But instead of rushing, we focused on the fundamentals — consistent in-person meetups, growing the community from scratch, and earning trust.&lt;/p&gt;&#xA;&lt;p&gt;As the community grew, we made a commitment: bring Kubernetes Community Day to Kochi.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AWS Community Day Kochi 2025 — AI/ML Edition: We Did It Again</title>
+      <link>http://localhost:1313/blog/2025-12-24-aws-community-day-kochi-2025/</link>
+      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025-12-24-aws-community-day-kochi-2025/</guid>
+      <description>&lt;p&gt;Winding up 2025 with pride — yes, we did it again.&lt;/p&gt;&#xA;&lt;p&gt;A heartfelt thank you to everyone who joined us for &lt;strong&gt;AWS Community Day Kochi 2025 – AI/ML Edition&lt;/strong&gt;. This year marks a special milestone for me — the fifth edition of #acdkochi and &lt;strong&gt;seven consecutive years&lt;/strong&gt; of organizing AWS Community Day events.&lt;/p&gt;&#xA;&lt;p&gt;Every year, towards the end, we feel that familiar kick to do another round of ACD. This year, we were a bit unsure about whether to announce it — but once we did, we committed to delivering it in style. As always, our goal was to bring a &lt;strong&gt;world-class event experience&lt;/strong&gt; for the Kochi community and raise the bar. I truly hope we lived up to that promise.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Amazon Smbhav Hackathon - Build for India - Winners</title>
+      <link>http://localhost:1313/blog/2021-04-18-aws-sambhav-hackathon-winner/</link>
+      <pubDate>Sun, 18 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2021-04-18-aws-sambhav-hackathon-winner/</guid>
+      <description>&lt;h3 id=&#34;amazon-smbhav-hackathon---build-for-india---winners&#34;&gt;Amazon Smbhav Hackathon - Build for India - Winners&lt;/h3&gt;&#xA;&lt;p&gt;As part of the Amazon Smbhav Summit, Skillenza organized an all-India Hackathon Challenge and our team won the first prize.   Congratulation to &lt;a href=&#34;https://www.linkedin.com/in/shamshiranees/&#34;&gt;Shamshir Anees&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/vinila-cherichal-04b267119/&#34;&gt;Vinila Cherichal&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/haridasan/&#34;&gt;Haridasan Shanmugam&lt;/a&gt;, and &lt;a href=&#34;https://www.linkedin.com/in/prabeesh-kavungal-326908a4/&#34;&gt;Prabheesh Kuttan&lt;/a&gt;. And kudos to all other participants.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/amazon-smbhav-hackathon-challenge.png&#34; alt=&#34;Team Info&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Everything happened over a casual chat with one of our team members Shamshir Anees, who is very keen to learn new technologies and used to build sample projects whenever he gets free time. I was sharing the Hackathon Event details via our AWSUGKOCHI channels and asked him to take a look. He was very interested to learn Serverless Technology and ready to give it a try.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AWS Community Day Kochi 2019</title>
+      <link>http://localhost:1313/blog/2019-11-05-aws-community-day-kochi-2019/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2019-11-05-aws-community-day-kochi-2019/</guid>
+      <description>&lt;h3 id=&#34;aws-community-day-kochi-2019&#34;&gt;AWS Community Day Kochi 2019&lt;/h3&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend | Dijeesh Padinharethil</title>
+  <meta name="description" content="Designed and deployed a 52-node bare-metal Elasticsearch cluster for a global media intelligence company — network design through production handover — in a single weekend.">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/projects/meltwater-elasticsearch-cluster/">
+
+  
+  <meta property="og:title" content="52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend">
+  <meta property="og:description" content="Designed and deployed a 52-node bare-metal Elasticsearch cluster for a global media intelligence company — network design through production handover — in a single weekend.">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/projects/meltwater-elasticsearch-cluster/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend">
+  <meta name="twitter:description" content="Designed and deployed a 52-node bare-metal Elasticsearch cluster for a global media intelligence company — network design through production handover — in a single weekend.">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <h1 class="article-title">52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend</h1>
+      <p class="project-role" style="font-size:0.9rem;margin-bottom:12px;">Lead Operations Engineer – DevOps · Network Redux</p>
+      <div class="post-tags">
+        
+        <span class="tag">Elasticsearch</span>
+        
+        <span class="tag">Bare Metal</span>
+        
+        <span class="tag">Ansible</span>
+        
+        <span class="tag">Juniper SRX</span>
+        
+        <span class="tag">Arista</span>
+        
+        <span class="tag">PXE</span>
+        
+        <span class="tag">Private Cloud</span>
+        
+      </div>
+      
+    </header>
+    <div class="article-content">
+      <p>Designed and built one of the largest search indexing clusters for a global media intelligence company — 52 bare-metal nodes in Network Redux&rsquo;s private cloud. Completed over a single weekend, in between flights from Portland to Kochi.</p>
+<h2 id="context">Context</h2>
+<p>A global media intelligence company needed a large-scale Elasticsearch cluster for search indexing, deployed on dedicated bare-metal infrastructure in a private cloud environment. The project required end-to-end delivery — from network architecture through OS provisioning to production handover — on an aggressive timeline.</p>
+<h2 id="what-i-did">What I Did</h2>
+<ul>
+<li>Designed a dedicated DMZ zone for the Elasticsearch environment within Juniper SRX firewall clusters</li>
+<li>Configured Arista switches with VLANs for network segmentation and isolation</li>
+<li>Deployed <strong>52 bare-metal instances</strong> with CentOS, security hardening, and client-specific customizations</li>
+<li>Implemented <strong>zero-touch OS installation</strong> using PXE boot for consistent, repeatable provisioning</li>
+<li>Built <strong>Ansible playbooks</strong> for all OS-level configurations across all 52 nodes</li>
+<li>Oversaw full documentation and structured handover to the operations team</li>
+</ul>
+<h2 id="results">Results</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Detail</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Nodes deployed</td>
+          <td><strong>52 bare-metal instances</strong></td>
+      </tr>
+      <tr>
+          <td>Delivery time</td>
+          <td><strong>Single weekend</strong></td>
+      </tr>
+      <tr>
+          <td>Scale</td>
+          <td>One of the <strong>largest search indexing clusters</strong> for the client</td>
+      </tr>
+      <tr>
+          <td>Provisioning</td>
+          <td><strong>Zero-touch</strong> — fully automated via PXE + Ansible</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="stack">Stack</h2>
+<p>Elasticsearch · Bare Metal · CentOS · PXE Boot · Ansible · Juniper SRX · Arista Switches · Private Cloud</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/projects/" class="btn btn-outline">← Back to Projects</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

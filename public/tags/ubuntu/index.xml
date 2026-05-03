@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Dijeesh Padinharethil</title>
+    <link>http://localhost:1313/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Dijeesh Padinharethil</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up Single node Kubernetes in AWS using Kubeadm</title>
+      <link>http://localhost:1313/blog/2020-01-05-setting-up-single-node-k8s-in-aws/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2020-01-05-setting-up-single-node-k8s-in-aws/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/2020-01-k8s-single-node.png&#34; alt=&#34;k8s&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h3&gt;&#xA;&lt;p&gt;Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management. It was originally designed by Google, and is now maintained by the Cloud Native Computing Foundation.&lt;/p&gt;&#xA;&lt;h3 id=&#34;single-node-kubernetes-cluster-on-aws&#34;&gt;Single Node Kubernetes Cluster on AWS&lt;/h3&gt;&#xA;&lt;p&gt;In this article, I will share the steps to be done to set up a Single Node Kubernetes Cluster on AWS using kubeadm.  This is only for testing and learning purposes.&lt;/p&gt;&#xA;&lt;p&gt;&lt;br&gt; &lt;br&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

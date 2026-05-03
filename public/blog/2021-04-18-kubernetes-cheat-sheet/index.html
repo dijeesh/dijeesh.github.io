@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kubernetes kubectl cheat sheet | Dijeesh Padinharethil</title>
+  <meta name="description" content="Kubernetes kubectl cheat sheet">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/blog/2021-04-18-kubernetes-cheat-sheet/">
+
+  
+  <meta property="og:title" content="Kubernetes kubectl cheat sheet">
+  <meta property="og:description" content="Kubernetes kubectl cheat sheet">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/blog/2021-04-18-kubernetes-cheat-sheet/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kubernetes kubectl cheat sheet">
+  <meta name="twitter:description" content="Kubernetes kubectl cheat sheet">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">April 18, 2021</time>
+      <span class="article-reading-time">· 1 min read</span>
+      <h1 class="article-title">Kubernetes kubectl cheat sheet</h1>
+      <div class="post-tags">
+        
+        <span class="tag">aws</span>
+        
+        <span class="tag">eks</span>
+        
+        <span class="tag">kubernetes</span>
+        
+        <span class="tag">kubectl</span>
+        
+        <span class="tag">cheatsheet</span>
+        
+        <span class="tag">devops</span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      <p>Few kubectl commands that will be helpful in troubleshooting K8S environments</p>
+<h3 id="cheat-sheet">Cheat Sheet</h3>
+<p>Sort events by timestamp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl get events --sort-by=&#39;.metadata.creationTimestamp&#39;
+</span></span></code></pre></div><p>Get list of resources stuck in a namespace</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n &lt;namespace&gt;
+</span></span></code></pre></div><p>Delete namespace stuck in Terminating Status</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl get namespace NAMESPACE -o json &gt; NAMESPACE.json
+</span></span><span style="display:flex;"><span>Remove kubernetes from finalizers array which is under spec
+</span></span><span style="display:flex;"><span>kubectl replace --raw &#34;/api/v1/namespaces/NAMESPACE/finalize&#34; -f ./NAMESPACE.json
+</span></span></code></pre></div><p>Get list of pods sorted by node name</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl get pods --all-namespaces -o wide --sort-by=&#34;{.spec.nodeName}&#34;
+</span></span></code></pre></div><p>Get list of images running on your cluster</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl get pods --all-namespaces -o jsonpath=&#34;{..image}&#34; | tr -s &#39;[[:space:]]&#39; &#39;\n&#39; | sort | uniq -c
+</span></span></code></pre></div><p>Get list of PODs in not running state</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>kubectl get pods --field-selector=status.phase!=Running --all-namespaces
+</span></span></code></pre></div>
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

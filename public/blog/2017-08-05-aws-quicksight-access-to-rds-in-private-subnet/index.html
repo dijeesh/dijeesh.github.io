@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Quicksight access for RDS instance in VPC Private subnets | Dijeesh Padinharethil</title>
+  <meta name="description" content="AWS Quicksight access for RDS instance in VPC Private subnets">
+  <meta name="author" content="Dijeesh Padinharethil">
+  <link rel="canonical" href="http://localhost:1313/blog/2017-08-05-aws-quicksight-access-to-rds-in-private-subnet/">
+
+  
+  <meta property="og:title" content="AWS Quicksight access for RDS instance in VPC Private subnets">
+  <meta property="og:description" content="AWS Quicksight access for RDS instance in VPC Private subnets">
+  <meta property="og:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+  <meta property="og:url" content="http://localhost:1313/blog/2017-08-05-aws-quicksight-access-to-rds-in-private-subnet/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Dijeesh Padinharethil">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AWS Quicksight access for RDS instance in VPC Private subnets">
+  <meta name="twitter:description" content="AWS Quicksight access for RDS instance in VPC Private subnets">
+  <meta name="twitter:image" content="http://localhost:1313/images/dijeesh-padinharethil.webp">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Dijeesh Padinharethil</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      
+      <li><a href="/" class="nav-link">Home</a></li>
+      
+      <li><a href="/blog/" class="nav-link">Blog</a></li>
+      
+      <li><a href="/projects/" class="nav-link">Projects</a></li>
+      
+      <li><a href="/community/" class="nav-link">Community</a></li>
+      
+      <li><a href="/#contact" class="nav-link">Contact</a></li>
+      
+      <li><a href="/resume/" class="nav-link">Resume</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    
+<article class="article">
+  <div class="container container-narrow">
+    <header class="article-header">
+      <time class="article-date">August 5, 2017</time>
+      <span class="article-reading-time">· 1 min read</span>
+      <h1 class="article-title">AWS Quicksight access for RDS instance in VPC Private subnets</h1>
+      <div class="post-tags">
+        
+        <span class="tag">AWS</span>
+        
+        <span class="tag">rds</span>
+        
+        <span class="tag">quicksight</span>
+        
+        <span class="tag">haproxy</span>
+        
+        <span class="tag">mysql</span>
+        
+        <span class="tag">visualization</span>
+        
+        <span class="tag">sysops</span>
+        
+        <span class="tag">dijeeshpnair</span>
+        
+        <span class="tag">devops</span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      <h2 id="quicksight">Quicksight</h2>
+<p>Amazon Quicksight is a powerful data visualization tool in AWS Cloud. It will help you to get business insights from your data. Working with Data on Quicksight is very easy, you may just go through its documentation.</p>
+<h2 id="connection-issues">Connection issues</h2>
+<p>However, if you&rsquo;re trying to source data from RDS instance, you&rsquo;ll find difficulties if the RDS instance in your VPC Private subnet. And a simple solution for this issue is put a proxy instance in your public subnet and instruct Quicksight to connect the proxy instance over Public Network.</p>
+<p>Here is a rough architecture diagram:</p>
+<p><img src="https://raw.githubusercontent.com/dijeesh/dijeesh.github.io/master/assets/media/quicksight.jpg" alt="Architecture Diagram"></p>
+<h2 id="steps-">Steps :</h2>
+<ol>
+<li>Create an EC2 instance in Public Subnet</li>
+<li>Configure Security Group to allow connectivity to RDS MySQL cluster from the EC2 instance.</li>
+<li>Configure Security Group to allow Quicksight connections into the EC2 instance.</li>
+<li>Confirm MySQL connectivity from EC2 instance to the RDS Cluster.</li>
+<li>Createa a MySQL user with <code>select</code> and <code>execute</code> privileges</li>
+<li>Install and configure HaProxy service in EC2 instance.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>yum install haproxy
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bak     
+</span></span></code></pre></div><p>Add following configuration</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>vi <span style="color:#ff79c6">/</span>etc<span style="color:#ff79c6">/</span>haproxy<span style="color:#ff79c6">/</span>haproxy<span style="color:#ff79c6">.</span>cfg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>global
+</span></span><span style="display:flex;"><span>      <span style="color:#8be9fd;font-style:italic">log</span> <span style="color:#ff79c6">/</span>dev<span style="color:#ff79c6">/</span><span style="color:#8be9fd;font-style:italic">log</span>    local0
+</span></span><span style="display:flex;"><span>      <span style="color:#8be9fd;font-style:italic">log</span> <span style="color:#ff79c6">/</span>dev<span style="color:#ff79c6">/</span><span style="color:#8be9fd;font-style:italic">log</span>    local1 notice
+</span></span><span style="display:flex;"><span>      chroot <span style="color:#ff79c6">/</span><span style="color:#ff79c6">var</span><span style="color:#ff79c6">/</span>lib<span style="color:#ff79c6">/</span>haproxy
+</span></span><span style="display:flex;"><span>      maxconn <span style="color:#bd93f9">4000</span>
+</span></span><span style="display:flex;"><span>      user haproxy
+</span></span><span style="display:flex;"><span>      group haproxy
+</span></span><span style="display:flex;"><span>      daemon
+</span></span><span style="display:flex;"><span>      stats socket <span style="color:#ff79c6">/</span><span style="color:#ff79c6">var</span><span style="color:#ff79c6">/</span>lib<span style="color:#ff79c6">/</span>haproxy<span style="color:#ff79c6">/</span>stats mode <span style="color:#bd93f9">777</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>listen MySQL 
+</span></span><span style="display:flex;"><span>      bind <span style="color:#bd93f9">0.0</span><span style="color:#ff79c6">.</span><span style="color:#bd93f9">0.0</span>:<span style="color:#bd93f9">3306</span>
+</span></span><span style="display:flex;"><span>      timeout connect <span style="color:#bd93f9">10</span>s
+</span></span><span style="display:flex;"><span>      timeout client <span style="color:#bd93f9">1</span>m
+</span></span><span style="display:flex;"><span>      timeout server <span style="color:#bd93f9">1</span>m
+</span></span><span style="display:flex;"><span>      mode tcp
+</span></span><span style="display:flex;"><span>      server rds<span style="color:#ff79c6">-</span>prod<span style="color:#ff79c6">-</span>cluster  rds<span style="color:#ff79c6">-</span>prod<span style="color:#ff79c6">-</span>cluster<span style="color:#ff79c6">.</span>cluster<span style="color:#ff79c6">-</span>xxxxx<span style="color:#ff79c6">.</span>xx<span style="color:#ff79c6">-</span>xxxx<span style="color:#ff79c6">-</span>x<span style="color:#ff79c6">.</span>rds<span style="color:#ff79c6">.</span>amazonaws<span style="color:#ff79c6">.</span>com:<span style="color:#bd93f9">3306</span>
+</span></span></code></pre></div><p>Now try to add Data source in your Quicksight dashboard, select MySQL, provide Public IP Address of your EC2 instance and MySQL credentials that you have created earlier.</p>
+<p>Quicksight will connect to EC2 instance and HaProxy Service running on EC2 instance will forward the traffic to RDS in Private subnet.</p>
+<p>Note : Lock down all other connections to the EC2 instance.</p>
+<p>Enjoy the power of data visualization !!</p>
+
+    </div>
+    <nav class="article-nav">
+      <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </nav>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>&copy; 2026 Dijeesh Padinharethil. All rights reserved.</p>
+      <p class="footer-built">Built with <a href="https://kiro.dev/" target="_blank"><img src="/images/kiro.webp" alt="Kiro" class="kiro-icon"> Kiro</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dijeeshpnair/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/dijeesh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/dijeeshpnair" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

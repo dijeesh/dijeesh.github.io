@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Private Cloud on Dijeesh Padinharethil</title>
+    <link>http://localhost:1313/tags/private-cloud/</link>
+    <description>Recent content in Private Cloud on Dijeesh Padinharethil</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/private-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>52-Node Bare-Metal Elasticsearch Cluster — Built in a Weekend</title>
+      <link>http://localhost:1313/projects/meltwater-elasticsearch-cluster/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/meltwater-elasticsearch-cluster/</guid>
+      <description>&lt;p&gt;Designed and built one of the largest search indexing clusters for a global media intelligence company — 52 bare-metal nodes in Network Redux&amp;rsquo;s private cloud. Completed over a single weekend, in between flights from Portland to Kochi.&lt;/p&gt;&#xA;&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;&#xA;&lt;p&gt;A global media intelligence company needed a large-scale Elasticsearch cluster for search indexing, deployed on dedicated bare-metal infrastructure in a private cloud environment. The project required end-to-end delivery — from network architecture through OS provisioning to production handover — on an aggressive timeline.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Enterprise Virtual Server Platform — Public Cloud Before Cloud Was Cool</title>
+      <link>http://localhost:1313/projects/xenserver-public-cloud-platform/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/xenserver-public-cloud-platform/</guid>
+      <description>&lt;p&gt;Before Amazon EC2, Azure Virtual Machines, and Google Compute Engine were mainstream, we were building and selling public cloud compute at Network Redux — powered by Citrix XenServer clusters, marketed as &lt;strong&gt;Enterprise Virtual Servers&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;&#xA;&lt;p&gt;Network Redux needed a scalable, reliable compute platform to offer enterprise customers on-demand virtual machines with dedicated resources, network isolation, and SLA-backed availability. This was the era before hyperscalers dominated — and we built it ourselves.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

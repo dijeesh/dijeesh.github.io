@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xen on Dijeesh Padinharethil</title>
+    <link>http://localhost:1313/tags/xen/</link>
+    <description>Recent content in Xen on Dijeesh Padinharethil</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/xen/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Applying XenServer Patches</title>
+      <link>http://localhost:1313/blog/2019-06-05-xenserver-patching/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2019-06-05-xenserver-patching/</guid>
+      <description>&lt;p&gt;For better performance and security it’s recommended to install all patches released by XenServer. In this article I would like to share the steps for applying patches on XenServer and XenServer pool&lt;/p&gt;&#xA;&lt;p&gt;Ref following Citrix Article to get list of recommended patches for your XenServer Version.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://support.citrix.com/article/CTX138115&lt;span style=&#34;color:#f1fa8c&#34;&gt;`&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;br&gt;&#xA;&lt;h2 id=&#34;single-xenserver-host&#34;&gt;Single XenServer Host&lt;/h2&gt;&#xA; &lt;br&gt;&#xA; If you’re running XenServer on a single hardware node, following steps can be used to install patches.&#xA;&lt;p&gt;&lt;strong&gt;1. Download Hotfix from Citrix Downloads Portal&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
