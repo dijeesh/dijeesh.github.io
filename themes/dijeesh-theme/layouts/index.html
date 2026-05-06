@@ -63,63 +63,208 @@
 <section class="section section-alt" id="skills">
   <div class="container">
     <h2 class="section-title">Core Skills</h2>
-    <div class="skills-categories">
-      <div class="skill-category">
-        <h4><i class="fas fa-microchip"></i> AI & GPU Infrastructure</h4>
-        <div class="skills-grid">
-          {{ range (slice "GPU Optimization" "AI Infra Cost Management" "LLM Infrastructure" "Karpenter" "GPU Observability" "Prompt Engineering") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
+    <div class="skills-cards">
+
+      <!-- AI & GPU -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-microchip"></i>
+          <h3>AI & GPU Infrastructure</h3>
+        </div>
+        <div class="card-body">
+          <p>Designing and optimizing large-scale AI and GPU workloads.</p>
+          <ul>
+            <li>GPU Optimization</li>
+            <li>LLM Infrastructure</li>
+            <li>Karpenter & Auto-provisioning</li>
+            <li>GPU Observability</li>
+          </ul>
+        </div>
+        <div class="card-hover">Reduced AI infra costs by 30–40% via autonomous optimization and right-sizing.</div>
+      </div>
+
+      <!-- Cloud -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-cloud"></i>
+          <h3>Cloud Architecture</h3>
+        </div>
+        <div class="card-body">
+          <p>Multi-cloud platform design across AWS, GCP, and Azure.</p>
+          <ul>
+            <li>AWS / GCP / Azure</li>
+            <li>Multi-cloud & Hybrid</li>
+            <li>Air-gapped Deployments</li>
+          </ul>
+        </div>
+        <div class="card-hover">Built multi-cloud platform infrastructure powering enterprise workloads.</div>
+      </div>
+
+      <!-- Kubernetes & Modern Apps -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-dharmachakra"></i>
+          <h3>Kubernetes & Modern Apps</h3>
+        </div>
+        <div class="card-body">
+          <p>Production-grade Kubernetes and modern application platforms.</p>
+          <ul>
+            <li>EKS / GKE / AKS / Self-managed</li>
+            <li>Docker, Helm, ArgoCD, GitOps</li>
+            <li>Serverless Computing</li>
+            <li>Microservices Architecture</li>
+          </ul>
+        </div>
+        <div class="card-hover">SME-level expertise in Kubernetes architecture, scaling, and optimization.</div>
+      </div>
+
+      <!-- Infrastructure & Networking -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-server"></i>
+          <h3>Infrastructure & Networking</h3>
+        </div>
+        <div class="card-body">
+          <p>Bare metal to cloud — full-stack infrastructure.</p>
+          <ul>
+            <li>Linux, Networking, VLANs</li>
+            <li>Private Cloud, XenServer, VMware</li>
+            <li>Juniper SRX, Firewalls</li>
+          </ul>
+        </div>
+        <div class="card-hover">Built and operated private cloud platforms and datacenter infrastructure at scale.</div>
+      </div>
+
+      <!-- DevOps & CI/CD -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-code-branch"></i>
+          <h3>DevOps & CI/CD</h3>
+        </div>
+        <div class="card-body">
+          <p>End-to-end pipeline design across platforms.</p>
+          <ul>
+            <li>Jenkins, GitHub Actions</li>
+            <li>GitLab CI/CD, Bitbucket Pipelines</li>
+            <li>Azure DevOps</li>
+          </ul>
+        </div>
+        <div class="card-hover">Designed and migrated CI/CD pipelines across multiple enterprise platforms.</div>
+      </div>
+
+      <!-- IaC -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-layer-group"></i>
+          <h3>Infrastructure as Code</h3>
+        </div>
+        <div class="card-body">
+          <p>Scalable infrastructure provisioning and management.</p>
+          <ul>
+            <li>Terraform, CloudFormation</li>
+            <li>Pulumi</li>
+            <li>Modular IaC Design</li>
+          </ul>
+        </div>
+        <div class="card-hover">Built reusable IaC modules for multi-account, multi-cloud environments.</div>
+      </div>
+
+      <!-- Configuration Management -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-cogs"></i>
+          <h3>Configuration Management</h3>
+        </div>
+        <div class="card-body">
+          <p>Automated server provisioning and compliance.</p>
+          <ul>
+            <li>Ansible</li>
+            <li>Puppet</li>
+          </ul>
+        </div>
+        <div class="card-hover">Managed fleet-wide configuration across hundreds of servers with zero drift.</div>
+      </div>
+
+      <!-- Platform Engineering -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-rocket"></i>
+          <h3>Platform Engineering</h3>
+        </div>
+        <div class="card-body">
+          <p>Building internal platforms for developer productivity.</p>
+          <ul>
+            <li>Deployment Automation</li>
+            <li>CI/CD Optimization</li>
+            <li>Self-Service Infrastructure</li>
+            <li>SQL & NoSQL Databases</li>
+          </ul>
+        </div>
+        <div class="card-hover">Built internal platforms enabling teams to ship faster with less friction.</div>
+      </div>
+
+      <!-- SRE -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-heartbeat"></i>
+          <h3>SRE & Observability</h3>
+        </div>
+        <div class="card-body">
+          <p>Reliability engineering and observability systems.</p>
+          <ul>
+            <li>Prometheus, Grafana</li>
+            <li>OpenTelemetry, VictoriaMetrics</li>
+            <li>Incident Management, SLA/SLO</li>
+          </ul>
+        </div>
+        <div class="card-hover">Defined incident management and reliability standards across teams.</div>
+      </div>
+
+      <!-- FinOps -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-coins"></i>
+          <h3>FinOps & Optimization</h3>
+        </div>
+        <div class="card-body">
+          <p>Cloud and AI cost optimization strategies.</p>
+          <ul>
+            <li>Cost Optimization</li>
+            <li>Right-sizing, Spot/Reserved</li>
+            <li>Capacity Planning</li>
+          </ul>
+        </div>
+        <div class="card-hover">Delivered consistent 30–40% cost reduction for enterprise customers.</div>
+      </div>
+
+      <!-- Leadership -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-users-cog"></i>
+          <h3>Leadership</h3>
+        </div>
+        <div class="card-body">
+          <p>Engineering leadership and team building.</p>
+          <ul>
+            <li>Distributed Teams (30–40 engineers)</li>
+            <li>Hiring & Mentoring</li>
+            <li>Solution Architecture</li>
+          </ul>
+        </div>
+        <div class="card-hover">Led teams of 30–40 engineers across global environments.</div>
+      </div>
+
+      <!-- Mindset -->
+      <div class="skill-card">
+        <div class="card-header">
+          <i class="fas fa-infinity"></i>
+          <h3>Learn. Build. Improve. Repeat.</h3>
+        </div>
+        <div class="card-body">
+          <p>"Strong systems are built through ownership, disciplined execution, and long-term thinking."</p>
         </div>
       </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-server"></i> Infrastructure & Networking</h4>
-        <div class="skills-grid">
-          {{ range (slice "Linux" "Networking" "Bare Metal" "Private Cloud" "XenServer" "VMware") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-cloud"></i> Cloud Platforms</h4>
-        <div class="skills-grid">
-          {{ range (slice "AWS" "GCP" "Azure" "Multi-cloud Architecture" "Hybrid Cloud" "Airgapped Cloud") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-dharmachakra"></i> Containers & Orchestration</h4>
-        <div class="skills-grid">
-          {{ range (slice "Kubernetes" "EKS" "GKE" "AKS" "Docker" "Helm" "ArgoCD" "GitOps" "Kustomize" "k3s" "Rancher") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-code-branch"></i> DevOps & CI/CD</h4>
-        <div class="skills-grid">
-          {{ range (slice "Terraform" "Ansible" "Jenkins" "GitHub Actions" "IaC" "Deployment Automation") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-heartbeat"></i> SRE & Observability</h4>
-        <div class="skills-grid">
-          {{ range (slice "Prometheus" "Grafana" "OpenTelemetry" "VictoriaMetrics" "Incident Management" "SLA/SLO") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="skill-category">
-        <h4><i class="fas fa-users-cog"></i> Leadership</h4>
-        <div class="skills-grid">
-          {{ range (slice "Engineering Management" "Distributed Teams" "Hiring & Mentoring" "Solution Architecture" "FinOps" "Work Ethics") }}
-          <span class="skill-tag">{{ . }}</span>
-          {{ end }}
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
