@@ -313,7 +313,10 @@ h1, h2, h3, h4 {
 
 .project-card {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, var(--color-accent));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   padding: 0;
   transition: all 0.2s;
@@ -356,7 +359,10 @@ h1, h2, h3, h4 {
 }
 .contact-card {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, var(--color-accent));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   padding: 24px;
   text-align: center;
@@ -377,8 +383,18 @@ h1, h2, h3, h4 {
 .community-item {
   display: flex;
   gap: 24px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--color-border-light);
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, #667eea);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.community-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.1);
 }
 .community-date {
   flex-shrink: 0;
@@ -616,18 +632,20 @@ h1, h2, h3, h4 {
 .skill-card {
   position: relative;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, #667eea);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   padding: 24px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 220px;
 }
 
 .skill-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border-color: var(--color-accent);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
 }
 
 .card-header {
@@ -683,7 +701,7 @@ h1, h2, h3, h4 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--color-accent);
+  background: #f2d9f5;
   color: #000;
   padding: 14px 20px;
   font-size: 0.8rem;
@@ -695,6 +713,42 @@ h1, h2, h3, h4 {
 
 .skill-card:hover .card-hover {
   transform: translateY(0);
+}
+
+/* Mindset Card - Gradient Border Effect */
+.skill-card-mindset {
+  background: var(--color-bg-card);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, #667eea);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.skill-card-mindset .card-header {
+  justify-content: center;
+}
+
+.skill-card-mindset .card-header i {
+  font-size: 1.5rem;
+}
+
+.skill-card-mindset .card-header h3 {
+  font-size: 1.1rem;
+}
+
+.skill-card-mindset .card-body p {
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.skill-card-mindset:hover {
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
 }
 
 /* Touch device support — show hover on tap */
@@ -744,7 +798,10 @@ h1, h2, h3, h4 {
 }
 .timeline-content {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, #667eea);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   padding: 24px;
   transition: all 0.2s;
@@ -808,12 +865,15 @@ h1, h2, h3, h4 {
   gap: 16px;
   padding: 20px;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, #667eea);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   transition: all 0.2s;
 }
 .highlight-item:hover {
-  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.1);
   box-shadow: var(--shadow-sm);
 }
 .highlight-item i {
@@ -959,13 +1019,16 @@ h1, h2, h3, h4 {
 
 .blog-card {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--color-bg-card), var(--color-bg-card)), linear-gradient(135deg, #f2f2f2, var(--color-accent));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   border-radius: var(--radius);
   transition: all 0.25s ease;
   overflow: hidden;
 }
 .blog-card:hover {
-  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
@@ -980,12 +1043,19 @@ h1, h2, h3, h4 {
 .blog-card-link:hover { color: inherit; }
 
 .blog-card-top {
+  padding: 16px 20px 8px;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border-light);
+}
+.blog-card-top .blog-card-title {
+  padding: 0;
+  margin: 0;
+}
+.blog-card-meta {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border-light);
+  padding: 10px 20px 0;
 }
 .blog-card-date {
   font-size: 0.8rem;
