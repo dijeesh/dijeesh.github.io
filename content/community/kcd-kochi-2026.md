@@ -2,6 +2,9 @@
 title: "Kubernetes Community Day Kochi 2026 — Organizer"
 date: 2026-01-20
 endDate: "2026"
+videos:
+  - title: "KCDKOCHI26"
+    id: "N0Sc5zJ6onU"
 ---
 
 Organized the first-ever Kubernetes Community Day Kochi under the official CNCF umbrella — after 3 consecutive years of pushing to make it happen.
